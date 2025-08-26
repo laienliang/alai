@@ -1,0 +1,127 @@
+/* ==========================================
+   联系我们部分高度紧凑布局
+   ========================================== */
+
+/* 调整联系部分的垂直间距 */
+.contact {
+  padding: 60px 0 !important;
+}
+
+.contact .section-title {
+  margin-bottom: 15px !important;
+}
+
+.contact .section-subtitle {
+  margin-bottom: 25px !important;
+}
+
+/* 保持原有宽度布局 */
+.contact-content {
+  gap: 40px !important;
+}
+
+.contact-form-wrapper {
+  flex: 1.5;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+/* 减少表单项间距 */
+.form-group {
+  margin-bottom: 20px !important;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px !important;
+  font-size: 14px;
+}
+
+.form-group label {
+  top: 12px !important;
+  font-size: 14px;
+}
+
+.form-group input:focus ~ label,
+.form-group textarea:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  top: -8px !important;
+  font-size: 11px;
+}
+
+/* 减小文本域高度 */
+.form-group textarea {
+  rows: 3;
+  min-height: 80px !important;
+  max-height: 150px;
+}
+
+/* 联系信息卡片更紧凑 */
+.contact-item {
+  padding: 20px !important;
+  margin-bottom: 15px !important;
+}
+
+.contact-item h4 {
+  font-size: 16px;
+  margin-bottom: 5px !important;
+}
+
+.contact-item p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* 保持原有二维码大小 */
+.qr-container {
+  margin-top: 10px !important;
+}
+
+.qr-code {
+  width: 150px !important;
+  height: 150px !important;
+  padding: 8px !important;
+}
+
+/* 按钮保持原有大小 */
+.contact-form .btn {
+  padding: 12px 30px !important;
+  font-size: 16px;
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+  .contact-content {
+    flex-direction: column;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 40px 0 !important;
+  }
+  
+  .qr-code {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .contact-item {
+    padding: 15px !important;
+  }
+}
+
+/* 保持原有容器宽度 */
+.contact .container {
+  max-width: 1200px;
+}
+
+/* 信息图标保持原大小 */
+.info-icon {
+  font-size: 24px !important;
+  margin-bottom: 10px;
+}

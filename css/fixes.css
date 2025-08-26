@@ -1,0 +1,188 @@
+/* ==========================================
+   修复显示问题的样式
+   ========================================== */
+
+/* 修复头像被导航栏遮挡 */
+.hero {
+  padding-top: calc(var(--navbar-height) + 30px) !important;
+  min-height: 100vh;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding-top: 20px;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 10;
+}
+
+/* 修复滚动指示器被遮挡 */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .scroll-indicator {
+  background: rgba(26, 26, 46, 0.9);
+}
+
+/* 修复微信二维码变形 */
+.qr-code {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-top: var(--space-sm);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px;
+  background: white;
+}
+
+/* 联系页面二维码容器 */
+.qr-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* 页脚二维码样式 */
+.footer-qr {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 5px;
+  background: white;
+  margin-top: 10px;
+  display: block;
+}
+
+/* 导航栏层级调整 */
+.navbar {
+  z-index: 1000;
+}
+
+/* 粒子画布层级调整 */
+.particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 头像容器调整 */
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 3px solid white;
+}
+
+/* 修复关于我部分SVG背景位置 */
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-bg-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.about .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* 技能部分背景修复 */
+.skills {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.skills .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--navbar-height) + 20px) !important;
+  }
+  
+  .scroll-indicator {
+    bottom: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .qr-code {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .footer-qr {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* 修复按钮和链接的点击区域 */
+.btn, .nav-link {
+  position: relative;
+  z-index: 10;
+}
+
+/* 确保所有交互元素可点击 */
+button, a, input, textarea, select {
+  position: relative;
+  z-index: 10;
+}
+
+/* 修复timeline图标位置 */
+.timeline-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: var(--bg-primary);
+}
+
+/* 加载屏幕优先级最高 */
+.loading-screen {
+  z-index: 10000;
+}

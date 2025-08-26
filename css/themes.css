@@ -1,0 +1,227 @@
+/* ==========================================
+   主题样式 - 明暗主题系统
+   ========================================== */
+
+/* Light Theme (Default) */
+:root[data-theme="light"] {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #e74c3c;
+  --accent-color: #f39c12;
+  
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-light: #95a5a6;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-dark: #ecf0f1;
+  
+  --border-color: #e1e8ed;
+  
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  --primary-color: #5dade2;
+  --primary-dark: #3498db;
+  --secondary-color: #ec7063;
+  --accent-color: #f4d03f;
+  
+  --text-primary: #ecf0f1;
+  --text-secondary: #bdc3c7;
+  --text-light: #95a5a6;
+  
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-dark: #0f3460;
+  
+  --border-color: #2c3e50;
+  
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
+}
+
+/* Dark Theme Specific Styles */
+[data-theme="dark"] {
+  /* Navigation */
+  .navbar {
+    background: rgba(26, 26, 46, 0.95);
+  }
+  
+  .navbar.scrolled {
+    background: rgba(22, 33, 62, 0.98);
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  }
+  
+  .particles-canvas {
+    opacity: 0.3;
+  }
+  
+  /* Cards and Containers */
+  .timeline-content,
+  .portfolio-item,
+  .blog-card,
+  .idol-card,
+  .contact-form input,
+  .contact-form textarea {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+  }
+  
+  .timeline-content:hover,
+  .portfolio-item:hover,
+  .blog-card:hover {
+    background: rgba(22, 33, 62, 0.8);
+  }
+  
+  /* Code blocks */
+  code {
+    background: var(--bg-dark);
+    color: var(--accent-color);
+  }
+  
+  /* Skill bars */
+  .skill-bar {
+    background: var(--bg-dark);
+  }
+  
+  /* Footer */
+  .footer {
+    background: var(--bg-dark);
+    border-top-color: var(--border-color);
+  }
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+  }
+}
+
+/* Theme Transition */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Preserve transitions for specific elements */
+.btn,
+.nav-link,
+.portfolio-item,
+.blog-card,
+.timeline-content {
+  transition: all 0.3s ease;
+}
+
+/* Theme Toggle Button Animation */
+.theme-toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+.theme-toggle:hover::before {
+  width: 40px;
+  height: 40px;
+  opacity: 0.2;
+}
+
+/* Dark mode specific animations */
+[data-theme="dark"] .hero-title {
+  background: linear-gradient(135deg, #5dade2, #f4d03f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .stat-number {
+  color: var(--accent-color);
+}
+
+[data-theme="dark"] .timeline::before {
+  background: linear-gradient(180deg, 
+    #5dade2 0%, 
+    #f4d03f 50%, 
+    #ec7063 100%);
+}
+
+/* Smooth color transitions for interactive elements */
+[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, #5dade2, #3498db);
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--primary-color);
+  color: var(--bg-primary);
+}
+
+/* Glow effects in dark mode */
+[data-theme="dark"] .profile-image {
+  box-shadow: 0 0 30px rgba(93, 173, 226, 0.3);
+}
+
+[data-theme="dark"] .timeline-icon {
+  box-shadow: 0 0 15px rgba(93, 173, 226, 0.4);
+}
+
+[data-theme="dark"] .back-to-top {
+  background: var(--primary-color);
+  box-shadow: 0 0 20px rgba(93, 173, 226, 0.5);
+}
+
+/* Syntax highlighting for dark mode */
+[data-theme="dark"] pre {
+  background: #0f3460;
+  color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+[data-theme="dark"] pre code {
+  background: transparent;
+  color: inherit;
+}

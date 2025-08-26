@@ -1,0 +1,454 @@
+/* ==========================================
+   增强样式 - 酷炫科技感设计
+   ========================================== */
+
+/* 增强的头像样式 */
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+  animation: float 6s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  75% { transform: translateY(5px) rotate(-1deg); }
+}
+
+/* 酷炫的渐变文字 */
+.hero-title {
+  font-size: 4rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #fda085 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 紧凑的关于我部分 */
+.about-content-compact {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.about-bg-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* 紧凑的偶像卡片 */
+.idol-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.idol-card {
+  padding: 0.75rem;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(52, 152, 219, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.idol-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.idol-card:hover::before {
+  left: 100%;
+}
+
+.idol-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+  border-color: var(--primary-color);
+}
+
+.idol-card h5 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+
+.idol-title {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.idol-quote {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* 紧凑的成就列表 */
+.achievements-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.achievements-list li {
+  padding: 0.5rem;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.1) 0%, rgba(52, 152, 219, 0.1) 100%);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.achievements-list li:hover {
+  transform: translateX(5px);
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(52, 152, 219, 0.2) 100%);
+}
+
+/* 紧凑的技能网格 */
+.skills-grid-compact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.tech-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.tech-circuit {
+  width: 100%;
+  height: auto;
+}
+
+/* 技能卡片网格 */
+.skills-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.skill-card:hover::before {
+  width: 200%;
+  height: 200%;
+  opacity: 0.1;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.2) 0%, rgba(155, 89, 182, 0.2) 100%);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.skill-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+
+.skill-level {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.skill-percentage {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-top: 0.25rem;
+}
+
+/* 酷炫的进度条 */
+.skill-progress {
+  height: 8px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 霓虹灯效果的按钮 */
+.btn-neon {
+  position: relative;
+  padding: 12px 30px;
+  border: 2px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-neon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn-neon:hover::before {
+  left: 0;
+}
+
+.btn-neon:hover {
+  color: white;
+  box-shadow: 0 0 20px var(--primary-color),
+              0 0 40px var(--primary-color),
+              0 0 60px var(--primary-color);
+}
+
+/* 3D 卡片效果 */
+.card-3d {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  transition: transform 0.6s;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateY(10deg) rotateX(10deg);
+}
+
+/* 粒子动画背景 */
+.particles-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float-particle 15s infinite linear;
+}
+
+@keyframes float-particle {
+  from {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  to {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 故障效果文字 */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitch-1 0.5s infinite linear alternate-reverse;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitch-2 0.5s infinite linear alternate-reverse;
+  color: #ff00ff;
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-2px, 2px);
+  }
+  100% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
+    transform: translate(2px, 2px);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    transform: translate(-2px, -2px);
+  }
+}
+
+/* 网格背景 */
+.grid-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(52, 152, 219, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52, 152, 219, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: grid-move 10s linear infinite;
+}
+
+@keyframes grid-move {
+  from { background-position: 0 0; }
+  to { background-position: 50px 50px; }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .about-content-compact {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .idol-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* 玻璃态效果 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}

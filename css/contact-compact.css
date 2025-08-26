@@ -30,17 +30,17 @@
 
 /* 减少表单项间距 */
 .form-group {
-  margin-bottom: 20px !important;
+  margin-bottom: 15px !important;
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 12px !important;
+  padding: 10px 12px !important;
   font-size: 14px;
 }
 
 .form-group label {
-  top: 12px !important;
+  top: 11px !important;
   font-size: 14px;
 }
 
@@ -48,21 +48,21 @@
 .form-group textarea:focus ~ label,
 .form-group input:not(:placeholder-shown) ~ label,
 .form-group textarea:not(:placeholder-shown) ~ label {
-  top: -8px !important;
+  top: -9px !important;
   font-size: 11px;
 }
 
 /* 减小文本域高度 */
 .form-group textarea {
-  rows: 3;
-  min-height: 80px !important;
-  max-height: 150px;
+  min-height: 70px !important;
+  max-height: 120px;
+  resize: vertical;
 }
 
 /* 联系信息卡片更紧凑 */
 .contact-item {
-  padding: 20px !important;
-  margin-bottom: 15px !important;
+  padding: 18px !important;
+  margin-bottom: 12px !important;
 }
 
 .contact-item h4 {
@@ -86,10 +86,11 @@
   padding: 8px !important;
 }
 
-/* 按钮保持原有大小 */
+/* 按钮适度调整 */
 .contact-form .btn {
-  padding: 12px 30px !important;
-  font-size: 16px;
+  padding: 11px 28px !important;
+  font-size: 15px;
+  margin-top: 5px;
 }
 
 /* 响应式调整 */

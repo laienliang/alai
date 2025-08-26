@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国际化最终测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        .lang-switcher select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .test-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .portfolio-item {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .portfolio-item h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .tech-tags, .portfolio-stats {
+            margin-top: 15px;
+        }
+        .tech-tags span, .portfolio-stats span {
+            display: inline-block;
+            margin: 5px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .tech-tags span {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #bbdefb;
+        }
+        .portfolio-stats span {
+            background: #fff3e0;
+            color: #f57c00;
+            border: 1px solid #ffe0b2;
+        }
+        .contact-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .info-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        .info-item h4 {
+            margin: 0 0 8px 0;
+            color: #495057;
+            font-size: 16px;
+        }
+        .info-item p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .status {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            color: white;
+        }
+        .status h3 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+        }
+        .status-ok {
+            color: #4ade80;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .status-fail {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .status ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        .status li {
+            margin: 5px 0;
+            list-style-type: disc;
+        }
+        .about-sidebar {
+            display: flex;
+            gap: 30px;
+        }
+        .idols-section, .achievements-section {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        .idols-section h4, .achievements-section h4 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换器 -->
+    <div class="lang-switcher">
+        <label for="lang-select">🌐 Language：</label>
+        <select id="lang-select">
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="zh-TW">繁體中文</option>
+        </select>
+    </div>
+
+    <div class="test-container">
+        <h1>🧪 国际化功能最终测试</h1>
+        <p class="subtitle">验证所有文本是否能正确切换语言</p>
+
+        <!-- 测试关于我部分 -->
+        <div class="test-section">
+            <div class="test-title">📋 关于我部分</div>
+            <div class="about-sidebar">
+                <div class="idols-section">
+                    <h4>人生偶像</h4>
+                    <p style="color: #666; font-size: 14px;">展示人生偶像列表</p>
+                </div>
+                <div class="achievements-section">
+                    <h4>荣誉成就</h4>
+                    <p style="color: #666; font-size: 14px;">展示获得的荣誉</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 测试项目部分 -->
+        <div class="test-section">
+            <div class="test-title">💼 项目作品示例</div>
+            
+            <!-- AI创赢项目 -->
+            <div class="portfolio-item">
+                <h3>AI创赢-企业AI员工</h3>
+                <p style="color: #666;">100%原创自研AI智能体平台</p>
+                <div class="tech-tags">
+                    <span>微服务架构</span>
+                    <span>私域运营</span>
+                    <span>全渠道</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>🔥 原创自研</span>
+                    <span>📈 1000+企业客户</span>
+                </div>
+            </div>
+
+            <!-- 其他项目示例 -->
+            <div class="portfolio-item">
+                <h3>一部手机云品荟</h3>
+                <p style="color: #666;">云南省重点项目</p>
+                <div class="tech-tags">
+                    <span>政企合作</span>
+                    <span>供应链</span>
+                    <span>农产品</span>
+                    <span>流通体系</span>
+                    <span>高并发</span>
+                    <span>工作流</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>🏛️ 省级重点项目</span>
+                    <span>🌾 覆盖全省农产品</span>
+                    <span>🏪 500+ 门店接入</span>
+                    <span>📊 全链路数字化</span>
+                    <span>🔧 核心框架</span>
+                    <span>📊 高可用</span>
+                    <span>💰 上亿投资</span>
+                    <span>👥 带领6人团队</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 测试联系部分 -->
+        <div class="test-section">
+            <div class="test-title">📞 联系方式</div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <span class="info-icon">📧</span>
+                    <div>
+                        <h4>邮箱</h4>
+                        <p>lianglaiyang@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">💬</span>
+                    <div>
+                        <h4>微信</h4>
+                        <p>扫码添加微信</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 状态显示 -->
+        <div class="status">
+            <h3>📊 测试结果</h3>
+            <div id="status-text">
+                <p>正在加载测试结果...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载国际化脚本 -->
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 等待i18n初始化完成
+        setTimeout(() => {
+            // 监听语言切换
+            document.getElementById('lang-select').addEventListener('change', function(e) {
+                setTimeout(() => {
+                    checkTranslation(e.target.value);
+                }, 300);
+            });
+
+            // 初始检查
+            checkTranslation(document.getElementById('lang-select').value);
+        }, 500);
+
+        function checkTranslation(lang) {
+            const statusEl = document.getElementById('status-text');
+            const issues = [];
+            const successes = [];
+
+            if (lang === 'en') {
+                // 检查关于我部分
+                const idolsTitle = document.querySelector('.idols-section h4');
+                if (idolsTitle) {
+                    if (idolsTitle.textContent === '人生偶像') {
+                        issues.push('❌ "人生偶像" 未翻译');
+                    } else if (idolsTitle.textContent === 'Life Idols') {
+                        successes.push('✅ "人生偶像" → "Life Idols"');
+                    }
+                }
+                
+                const achievementsTitle = document.querySelector('.achievements-section h4');
+                if (achievementsTitle) {
+                    if (achievementsTitle.textContent === '荣誉成就') {
+                        issues.push('❌ "荣誉成就" 未翻译');
+                    } else if (achievementsTitle.textContent.includes('Achievement')) {
+                        successes.push('✅ "荣誉成就" → "' + achievementsTitle.textContent + '"');
+                    }
+                }
+
+                // 检查技术标签
+                const techTags = document.querySelectorAll('.tech-tags span');
+                const chineseTags = [];
+                const translatedTags = [];
+                techTags.forEach(tag => {
+                    const text = tag.textContent;
+                    if (text.match(/[\u4e00-\u9fa5]/)) {
+                        chineseTags.push(text);
+                    } else {
+                        translatedTags.push(text);
+                    }
+                });
+                if (chineseTags.length > 0) {
+                    issues.push(`❌ 技术标签未翻译: ${chineseTags.join(', ')}`);
+                }
+                if (translatedTags.length > 0) {
+                    successes.push(`✅ 已翻译的技术标签: ${translatedTags.slice(0, 3).join(', ')}...`);
+                }
+
+                // 检查统计数据
+                const stats = document.querySelectorAll('.portfolio-stats span');
+                const chineseStats = [];
+                const translatedStats = [];
+                stats.forEach(stat => {
+                    const text = stat.textContent;
+                    if (text.match(/[\u4e00-\u9fa5]/) && 
+                        !text.includes('QPS') && 
+                        !text.includes('500+') && 
+                        !text.includes('1000+')) {
+                        chineseStats.push(text);
+                    } else if (text.includes('Original') || text.includes('Provincial') || 
+                               text.includes('Coverage') || text.includes('Framework') || 
+                               text.includes('Investment') || text.includes('Leading')) {
+                        translatedStats.push(text);
+                    }
+                });
+                if (chineseStats.length > 0) {
+                    issues.push(`❌ 统计数据未翻译: ${chineseStats.slice(0, 3).join(', ')}...`);
+                }
+                if (translatedStats.length > 0) {
+                    successes.push(`✅ 已翻译的统计: ${translatedStats.slice(0, 3).join(', ')}...`);
+                }
+
+                // 检查联系方式
+                const contactTitles = document.querySelectorAll('.info-item h4');
+                const contactPs = document.querySelectorAll('.info-item p');
+                contactTitles.forEach((title, index) => {
+                    const text = title.textContent;
+                    if (text === '邮箱') {
+                        issues.push('❌ "邮箱" 未翻译');
+                    } else if (text === 'Email') {
+                        successes.push('✅ "邮箱" → "Email"');
+                    }
+                    if (text === '微信') {
+                        issues.push('❌ "微信" 未翻译');
+                    } else if (text === 'WeChat') {
+                        successes.push('✅ "微信" → "WeChat"');
+                    }
+                });
+                
+                contactPs.forEach(p => {
+                    if (p.textContent === '扫码添加微信') {
+                        issues.push('❌ "扫码添加微信" 未翻译');
+                    } else if (p.textContent.includes('Scan')) {
+                        successes.push('✅ "扫码添加微信" → "' + p.textContent + '"');
+                    }
+                });
+
+                // 显示结果
+                let html = '';
+                if (successes.length > 0) {
+                    html += '<div style="margin-bottom: 20px;"><strong>成功翻译的内容:</strong><ul>' + 
+                        successes.map(s => '<li>' + s + '</li>').join('') + '</ul></div>';
+                }
+                if (issues.length === 0) {
+                    html += '<p class="status-ok">🎉 完美！所有文本都已正确翻译成英文！</p>';
+                } else {
+                    html += '<div><strong class="status-fail">发现以下未翻译的文本:</strong><ul>' + 
+                        issues.map(issue => '<li>' + issue + '</li>').join('') + '</ul></div>';
+                }
+                statusEl.innerHTML = html;
+            } else if (lang === 'zh-CN') {
+                statusEl.innerHTML = '<p>当前语言：简体中文（默认语言）</p><p style="color: #ffd93d;">💡 提示：请切换到 English 查看翻译效果</p>';
+            } else if (lang === 'zh-TW') {
+                statusEl.innerHTML = '<p>當前語言：繁體中文</p><p style="color: #ffd93d;">💡 提示：請切換到 English 查看翻譯效果</p>';
+            }
+        }
+    </script>
+</body>
+</html>

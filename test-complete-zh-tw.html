@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>繁體中文國際化完整測試</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .lang-switcher select {
+            padding: 10px 15px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .test-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+        }
+        .test-card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        .portfolio-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .portfolio-item h3 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .portfolio-content p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .tech-tags, .portfolio-stats {
+            margin-top: 15px;
+        }
+        .tech-tags span, .portfolio-stats span {
+            display: inline-block;
+            margin: 4px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .tech-tags span {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1565C0;
+        }
+        .portfolio-stats span {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            color: #E65100;
+        }
+        .contact-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .info-item:hover {
+            transform: translateX(5px);
+        }
+        .info-icon {
+            font-size: 28px;
+            margin-right: 15px;
+        }
+        .info-item h4 {
+            margin: 0 0 5px 0;
+            color: #495057;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .info-item p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .footer-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .footer-section h3, .footer-section h4 {
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+        }
+        .footer-section p {
+            color: #6c757d;
+            margin: 10px 0;
+        }
+        .idols-section, .achievements-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .idols-section h4, .achievements-section h4 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .status-dashboard {
+            background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .status-dashboard h3 {
+            font-size: 24px;
+            margin: 0 0 20px 0;
+        }
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .status-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        .status-item h5 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .check-pass {
+            color: #4ade80;
+            font-weight: bold;
+        }
+        .check-fail {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        .check-list {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .check-list li {
+            padding: 5px 0;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 語言切換器 -->
+    <div class="lang-switcher">
+        <label for="lang-select">🌐 測試語言切換</label><br><br>
+        <select id="lang-select">
+            <option value="zh-TW">繁體中文</option>
+            <option value="en">English</option>
+            <option value="zh-CN">简体中文</option>
+        </select>
+    </div>
+
+    <div class="test-container">
+        <h1>🧪 繁體中文國際化完整測試</h1>
+        <p class="subtitle">測試所有繁體中文內容切換到英文的完整性</p>
+
+        <div class="test-grid">
+            <!-- 左側：項目作品 -->
+            <div class="test-card">
+                <div class="test-card-title">📂 項目作品</div>
+                
+                <!-- AI創贏項目 -->
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-content">
+                        <h3>AI創贏 - 企業AI員工</h3>
+                        <p>100%自主研發的AI智能體平台，讓AI成為企業的超級員工與銷冠團隊。</p>
+                        <div class="tech-tags">
+                            <span>Python</span>
+                            <span>LLM</span>
+                            <span>微服務架構</span>
+                            <span>私域運營</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <span>🔥 原創自研</span>
+                            <span>📈 1000+企業客戶</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 唯品會項目 -->
+                <div class="portfolio-item" data-category="architecture">
+                    <div class="portfolio-content">
+                        <h3>唯品會開放平台</h3>
+                        <p>支撐30萬QPS高並發的開放平台，連接供應商、ISV服務商及開發者。</p>
+                        <div class="tech-tags">
+                            <span>Java</span>
+                            <span>Spring</span>
+                            <span>高並發</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <span>⚡ 30萬QPS</span>
+                            <span>🌐 億級用戶</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 廣東電信項目 -->
+                <div class="portfolio-item" data-category="enterprise">
+                    <div class="portfolio-content">
+                        <h3>廣東電信財務系統</h3>
+                        <p>省級核心財務結算系統，承載千萬用戶的計費與結算，年處理資金超千億。</p>
+                        <div class="tech-tags">
+                            <span>Java</span>
+                            <span>Oracle</span>
+                            <span>工作流</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <span>💰 上億投資</span>
+                            <span>👥 帶領6人團隊</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 雲品薈項目 -->
+                <div class="portfolio-item" data-category="government">
+                    <div class="portfolio-content">
+                        <h3>一部手機雲品薈</h3>
+                        <p>雲南省委、省政府指導下的重點項目。面向各類銷售渠道提供名特優產品直供及供應鏈服務。</p>
+                        <div class="tech-tags">
+                            <span>政企合作</span>
+                            <span>供應鏈</span>
+                            <span>農產品</span>
+                            <span>流通體系</span>
+                            <span>全渠道</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <span>🏛️ 省級重點項目</span>
+                            <span>🌾 覆蓋全省農產品</span>
+                            <span>🏪 500+ 門店接入</span>
+                            <span>📊 全鏈路數字化</span>
+                            <span>🔧 核心框架</span>
+                            <span>📊 高可用</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右側：其他測試 -->
+            <div class="test-card">
+                <div class="test-card-title">👤 個人資訊</div>
+                
+                <!-- 關於我部分 -->
+                <div class="idols-section">
+                    <h4>人生偶像</h4>
+                    <p style="color: #6c757d;">展示人生偶像資訊</p>
+                </div>
+                
+                <div class="achievements-section">
+                    <h4>榮譽成就</h4>
+                    <p style="color: #6c757d;">展示榮譽成就資訊</p>
+                </div>
+
+                <!-- 聯繫方式 -->
+                <div class="test-card-title" style="margin-top: 30px;">📮 聯繫方式</div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <h4>郵箱</h4>
+                            <p>lianglaiyang@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💬</span>
+                        <div>
+                            <h4>微信</h4>
+                            <p>掃碼添加微信</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 頁腳部分 -->
+                <div class="footer-section">
+                    <h3>梁來養</h3>
+                    <p>從放牛娃到技術總監，用代碼改變命運</p>
+                    <h4>聯繫方式</h4>
+                    <p>微信掃碼添加：</p>
+                    <p>© 2024 梁來養. 版權所有。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測試狀態儀表板 -->
+        <div class="status-dashboard">
+            <h3>📊 測試狀態儀表板</h3>
+            <div id="test-status">
+                <p>正在載入測試結果...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 載入國際化腳本 -->
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 等待i18n初始化
+        setTimeout(() => {
+            const langSelect = document.getElementById('lang-select');
+            langSelect.value = 'zh-TW';
+            
+            langSelect.addEventListener('change', function(e) {
+                setTimeout(() => {
+                    runCompleteTest(e.target.value);
+                }, 400);
+            });
+            
+            runCompleteTest('zh-TW');
+        }, 600);
+
+        function runCompleteTest(lang) {
+            const statusDiv = document.getElementById('test-status');
+            
+            if (lang === 'en') {
+                const testResults = {
+                    projects: [],
+                    personal: [],
+                    contact: [],
+                    footer: [],
+                    tags: { chinese: 0, english: 0 },
+                    stats: { chinese: 0, english: 0 }
+                };
+                
+                // 測試項目標題和描述
+                const projectTitles = document.querySelectorAll('.portfolio-item h3');
+                const projectDescs = document.querySelectorAll('.portfolio-content p');
+                
+                projectTitles.forEach((title, index) => {
+                    const hasChinese = /[\u4e00-\u9fa5]/.test(title.textContent);
+                    testResults.projects.push({
+                        element: '項目標題 ' + (index + 1),
+                        text: title.textContent,
+                        pass: !hasChinese
+                    });
+                });
+                
+                projectDescs.forEach((desc, index) => {
+                    if (!desc.textContent.includes('@')) { // 跳過郵箱
+                        const hasChinese = /[\u4e00-\u9fa5]/.test(desc.textContent);
+                        testResults.projects.push({
+                            element: '項目描述 ' + (index + 1),
+                            text: desc.textContent.substring(0, 50) + '...',
+                            pass: !hasChinese
+                        });
+                    }
+                });
+                
+                // 測試個人資訊
+                document.querySelectorAll('.idols-section h4, .achievements-section h4').forEach(h4 => {
+                    const hasChinese = /[\u4e00-\u9fa5]/.test(h4.textContent);
+                    testResults.personal.push({
+                        element: h4.parentElement.className,
+                        text: h4.textContent,
+                        pass: !hasChinese
+                    });
+                });
+                
+                // 測試聯繫方式
+                document.querySelectorAll('.info-item h4').forEach(h4 => {
+                    const hasChinese = /[\u4e00-\u9fa5]/.test(h4.textContent);
+                    testResults.contact.push({
+                        element: '聯繫標題',
+                        text: h4.textContent,
+                        pass: !hasChinese
+                    });
+                });
+                
+                document.querySelectorAll('.info-item p').forEach(p => {
+                    if (!p.textContent.includes('@') && p.textContent !== p.parentElement.querySelector('p').textContent) {
+                        const hasChinese = /[\u4e00-\u9fa5]/.test(p.textContent);
+                        if (p.textContent.includes('掃碼') || p.textContent.includes('Scan')) {
+                            testResults.contact.push({
+                                element: '微信提示',
+                                text: p.textContent,
+                                pass: !hasChinese
+                            });
+                        }
+                    }
+                });
+                
+                // 測試頁腳
+                document.querySelectorAll('.footer-section h3, .footer-section h4').forEach(h => {
+                    const hasChinese = /[\u4e00-\u9fa5]/.test(h.textContent);
+                    testResults.footer.push({
+                        element: '頁腳標題',
+                        text: h.textContent,
+                        pass: !hasChinese
+                    });
+                });
+                
+                document.querySelectorAll('.footer-section p').forEach(p => {
+                    const hasChinese = /[\u4e00-\u9fa5]/.test(p.textContent);
+                    if (!p.textContent.includes('©') && hasChinese) {
+                        testResults.footer.push({
+                            element: '頁腳文本',
+                            text: p.textContent,
+                            pass: false
+                        });
+                    }
+                });
+                
+                // 統計標籤和數據
+                document.querySelectorAll('.tech-tags span').forEach(tag => {
+                    if (/[\u4e00-\u9fa5]/.test(tag.textContent)) {
+                        testResults.tags.chinese++;
+                    } else {
+                        testResults.tags.english++;
+                    }
+                });
+                
+                document.querySelectorAll('.portfolio-stats span').forEach(stat => {
+                    if (/[\u4e00-\u9fa5]/.test(stat.textContent) && !stat.textContent.includes('QPS')) {
+                        testResults.stats.chinese++;
+                    } else {
+                        testResults.stats.english++;
+                    }
+                });
+                
+                // 生成報告
+                let html = '<div class="status-grid">';
+                
+                // 項目測試結果
+                html += '<div class="status-item">';
+                html += '<h5>📂 項目內容</h5>';
+                const projectPass = testResults.projects.every(r => r.pass);
+                html += projectPass ? 
+                    '<p class="check-pass">✅ 全部通過</p>' : 
+                    '<p class="check-fail">❌ 有 ' + testResults.projects.filter(r => !r.pass).length + ' 個未翻譯</p>';
+                html += '</div>';
+                
+                // 個人資訊測試結果
+                html += '<div class="status-item">';
+                html += '<h5>👤 個人資訊</h5>';
+                const personalPass = testResults.personal.every(r => r.pass);
+                html += personalPass ? 
+                    '<p class="check-pass">✅ 全部通過</p>' : 
+                    '<p class="check-fail">❌ 有 ' + testResults.personal.filter(r => !r.pass).length + ' 個未翻譯</p>';
+                html += '</div>';
+                
+                // 聯繫方式測試結果
+                html += '<div class="status-item">';
+                html += '<h5>📮 聯繫方式</h5>';
+                const contactPass = testResults.contact.every(r => r.pass);
+                html += contactPass ? 
+                    '<p class="check-pass">✅ 全部通過</p>' : 
+                    '<p class="check-fail">❌ 有 ' + testResults.contact.filter(r => !r.pass).length + ' 個未翻譯</p>';
+                html += '</div>';
+                
+                // 頁腳測試結果
+                html += '<div class="status-item">';
+                html += '<h5>📄 頁腳內容</h5>';
+                const footerPass = testResults.footer.every(r => r.pass);
+                html += footerPass ? 
+                    '<p class="check-pass">✅ 全部通過</p>' : 
+                    '<p class="check-fail">❌ 有 ' + testResults.footer.filter(r => !r.pass).length + ' 個未翻譯</p>';
+                html += '</div>';
+                
+                // 標籤統計
+                html += '<div class="status-item">';
+                html += '<h5>🏷️ 技術標籤</h5>';
+                html += '<p>' + testResults.tags.english + ' 個已翻譯</p>';
+                html += '<p>' + testResults.tags.chinese + ' 個未翻譯</p>';
+                html += '</div>';
+                
+                // 統計數據
+                html += '<div class="status-item">';
+                html += '<h5>📊 統計數據</h5>';
+                html += '<p>' + testResults.stats.english + ' 個已翻譯</p>';
+                html += '<p>' + testResults.stats.chinese + ' 個未翻譯</p>';
+                html += '</div>';
+                
+                html += '</div>';
+                
+                // 詳細問題列表
+                const allIssues = [
+                    ...testResults.projects.filter(r => !r.pass),
+                    ...testResults.personal.filter(r => !r.pass),
+                    ...testResults.contact.filter(r => !r.pass),
+                    ...testResults.footer.filter(r => !r.pass)
+                ];
+                
+                if (allIssues.length > 0) {
+                    html += '<div class="check-list">';
+                    html += '<h5>❌ 發現的問題：</h5>';
+                    html += '<ul>';
+                    allIssues.forEach(issue => {
+                        html += '<li>' + issue.element + ': "' + issue.text + '"</li>';
+                    });
+                    html += '</ul>';
+                    html += '</div>';
+                } else if (testResults.tags.chinese === 0 && testResults.stats.chinese === 0) {
+                    html += '<div class="check-list">';
+                    html += '<h5 class="check-pass">🎉 完美！所有內容都已正確翻譯成英文！</h5>';
+                    html += '</div>';
+                }
+                
+                statusDiv.innerHTML = html;
+                
+            } else if (lang === 'zh-TW') {
+                statusDiv.innerHTML = '<p>當前語言：繁體中文</p><p>請切換到 <strong>English</strong> 查看測試結果</p>';
+            } else if (lang === 'zh-CN') {
+                statusDiv.innerHTML = '<p>当前语言：简体中文</p><p>请切换到 <strong>English</strong> 查看测试结果</p>';
+            }
+        }
+    </script>
+</body>
+</html>

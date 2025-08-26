@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国际化修复测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .portfolio-item {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .tech-tags span, .portfolio-stats span {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background: white;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .tech-tags span {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        .portfolio-stats span {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 5px;
+        }
+        .status-ok {
+            color: green;
+        }
+        .status-fail {
+            color: red;
+        }
+        h4 {
+            margin: 10px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换器 -->
+    <div class="lang-switcher">
+        <label for="lang-select">语言切换 / Language：</label>
+        <select id="lang-select">
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="zh-TW">繁體中文</option>
+        </select>
+    </div>
+
+    <div class="test-container">
+        <h1>国际化修复测试页面</h1>
+        <p>测试所有需要国际化的文本是否正确切换</p>
+
+        <!-- 测试关于我部分 -->
+        <div class="test-section">
+            <div class="test-title">关于我部分</div>
+            <div class="about-sidebar">
+                <div class="idols-section">
+                    <h4>人生偶像</h4>
+                </div>
+                <div class="achievements-section">
+                    <h4>荣誉成就</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- 测试项目部分 -->
+        <div class="test-section">
+            <div class="test-title">项目作品</div>
+            
+            <!-- AI创赢项目 -->
+            <div class="portfolio-item">
+                <h3>AI创赢-企业AI员工</h3>
+                <p>100%原创自研AI智能体平台，让AI成为企业的超级员工和销冠团队。</p>
+                <div class="tech-tags">
+                    <span>Python</span>
+                    <span>LLM</span>
+                    <span>React</span>
+                    <span>微服务</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>🔥 原创自研</span>
+                    <span>📈 1000+企业客户</span>
+                </div>
+            </div>
+
+            <!-- 唯品会项目 -->
+            <div class="portfolio-item">
+                <h3>唯品会开放平台</h3>
+                <p>支撑30万QPS高并发的开放平台，连接供应商、ISV服务商及开发者。</p>
+                <div class="tech-tags">
+                    <span>Java</span>
+                    <span>Spring</span>
+                    <span>Redis</span>
+                    <span>高并发</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>⚡ 30万QPS</span>
+                    <span>🏢 头部电商</span>
+                </div>
+            </div>
+
+            <!-- 电信财务系统 -->
+            <div class="portfolio-item">
+                <h3>广东电信财务系统</h3>
+                <p>省级核心财务结算系统，管理千万用户账务与结算，年处理资金超万亿。</p>
+                <div class="tech-tags">
+                    <span>Java</span>
+                    <span>Oracle</span>
+                    <span>SOA</span>
+                    <span>工作流</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>💰 上亿投资</span>
+                    <span>👥 带领6人团队</span>
+                </div>
+            </div>
+
+            <!-- OSP框架 -->
+            <div class="portfolio-item">
+                <h3>OSP分布式服务框架</h3>
+                <p>基于RPC实现的分布式服务框架，类似淘宝Dubbo，高可用高并发。</p>
+                <div class="tech-tags">
+                    <span>Java</span>
+                    <span>Netty</span>
+                    <span>ZooKeeper</span>
+                    <span>分布式</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>🔧 核心框架</span>
+                    <span>📊 高可用</span>
+                </div>
+            </div>
+
+            <!-- 全渠道新零售 -->
+            <div class="portfolio-item">
+                <h3>全渠道新零售数字中台系统</h3>
+                <p>打通线上线下全渠道，构建SBbCc网络生态。</p>
+                <div class="tech-tags">
+                    <span>微服务架构</span>
+                    <span>私域运营</span>
+                    <span>全渠道</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>🏪 500+ 门店接入</span>
+                    <span>📊 全链路数字化</span>
+                </div>
+            </div>
+
+            <!-- 一部手机云品荟 -->
+            <div class="portfolio-item">
+                <h3>一部手机云品荟</h3>
+                <p>云南省委、省政府指导下的重点项目。</p>
+                <div class="tech-tags">
+                    <span>政企合作</span>
+                    <span>供应链</span>
+                    <span>农产品</span>
+                    <span>流通体系</span>
+                </div>
+                <div class="portfolio-stats">
+                    <span>🏛️ 省级重点项目</span>
+                    <span>🌾 覆盖全省农产品</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 测试联系部分 -->
+        <div class="test-section">
+            <div class="test-title">联系方式</div>
+            <div class="contact-item">
+                <h4>邮箱</h4>
+                <p>example@email.com</p>
+            </div>
+            <div class="contact-item">
+                <h4>微信</h4>
+                <p>扫码添加微信</p>
+            </div>
+        </div>
+
+        <!-- 状态显示 -->
+        <div class="status">
+            <h3>测试状态</h3>
+            <p id="status-text">请切换语言查看测试结果...</p>
+        </div>
+    </div>
+
+    <!-- 加载国际化脚本 -->
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 监听语言切换
+        document.getElementById('lang-select').addEventListener('change', function(e) {
+            setTimeout(() => {
+                checkTranslation(e.target.value);
+            }, 200);
+        });
+
+        function checkTranslation(lang) {
+            const statusEl = document.getElementById('status-text');
+            const issues = [];
+
+            // 检查各个文本是否正确翻译
+            if (lang === 'en') {
+                // 检查关于我部分
+                const idolsTitle = document.querySelector('.idols-section h4');
+                if (idolsTitle && idolsTitle.textContent === '人生偶像') {
+                    issues.push('人生偶像 未翻译');
+                }
+                const achievementsTitle = document.querySelector('.achievements-section h4');
+                if (achievementsTitle && achievementsTitle.textContent === '荣誉成就') {
+                    issues.push('荣誉成就 未翻译');
+                }
+
+                // 检查技术标签
+                const techTags = document.querySelectorAll('.tech-tags span');
+                techTags.forEach(tag => {
+                    const text = tag.textContent;
+                    if (text.match(/[\u4e00-\u9fa5]/)) {
+                        issues.push(`技术标签 "${text}" 未翻译`);
+                    }
+                });
+
+                // 检查统计数据
+                const stats = document.querySelectorAll('.portfolio-stats span');
+                stats.forEach(stat => {
+                    const text = stat.textContent;
+                    if (text.match(/[\u4e00-\u9fa5]/) && 
+                        !text.includes('QPS') && 
+                        !text.includes('500+') && 
+                        !text.includes('1000+')) {
+                        issues.push(`统计数据 "${text}" 未翻译`);
+                    }
+                });
+
+                // 检查联系方式
+                const contactTitles = document.querySelectorAll('.contact-item h4');
+                contactTitles.forEach(title => {
+                    const text = title.textContent;
+                    if (text === '邮箱' || text === '微信') {
+                        issues.push(`联系方式 "${text}" 未翻译`);
+                    }
+                });
+
+                if (issues.length === 0) {
+                    statusEl.innerHTML = '<span class="status-ok">✅ 所有文本已正确翻译成英文！</span>';
+                } else {
+                    statusEl.innerHTML = '<span class="status-fail">❌ 发现以下未翻译的文本：</span><ul>' + 
+                        issues.map(issue => '<li>' + issue + '</li>').join('') + '</ul>';
+                }
+            } else if (lang === 'zh-CN') {
+                statusEl.innerHTML = '当前语言：简体中文（默认语言）';
+            } else if (lang === 'zh-TW') {
+                statusEl.innerHTML = '當前語言：繁體中文';
+            }
+        }
+
+        // 初始检查
+        setTimeout(() => {
+            checkTranslation(document.getElementById('lang-select').value);
+        }, 500);
+    </script>
+</body>
+</html>

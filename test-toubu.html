@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>头部电商翻译测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .portfolio-item {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+        .portfolio-item h3 {
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+        }
+        .portfolio-stats {
+            margin-top: 20px;
+        }
+        .portfolio-stats span {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            color: #E65100;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .test-status {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border: 2px solid #4caf50;
+        }
+        .status-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2e7d32;
+        }
+        .status-item {
+            padding: 10px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 4px;
+        }
+        .pass {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .fail {
+            color: #f44336;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换器 -->
+    <div class="lang-switcher">
+        <label for="lang-select">🌐 语言切换：</label>
+        <select id="lang-select">
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="zh-TW">繁體中文</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <h1>测试"头部电商"翻译问题</h1>
+        
+        <!-- 唯品会项目 -->
+        <div class="portfolio-item" data-category="architecture enterprise">
+            <div class="portfolio-content">
+                <h3>唯品会开放平台</h3>
+                <p>支撑30万QPS高并发的开放平台，连接供应商、ISV服务商及开发者。</p>
+                <div class="portfolio-stats">
+                    <span>⚡ 30万QPS</span>
+                    <span>🏢 头部电商</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 测试状态 -->
+        <div class="test-status">
+            <div class="status-title">测试结果</div>
+            <div id="test-results">
+                <p>请切换语言查看测试结果...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载国际化脚本 -->
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 监听语言切换
+        document.getElementById('lang-select').addEventListener('change', function(e) {
+            setTimeout(() => {
+                checkTranslation(e.target.value);
+            }, 200);
+        });
+
+        function checkTranslation(lang) {
+            const resultsDiv = document.getElementById('test-results');
+            const stats = document.querySelectorAll('.portfolio-stats span');
+            let html = '';
+            
+            stats.forEach(stat => {
+                const text = stat.textContent;
+                const hasChinese = /[\u4e00-\u9fa5]/.test(text);
+                
+                if (lang === 'en') {
+                    if (text.includes('头部电商') || text.includes('頭部電商')) {
+                        html += '<div class="status-item"><span class="fail">❌ "' + text + '" 未翻译成英文</span></div>';
+                    } else if (text.includes('Leading E-commerce')) {
+                        html += '<div class="status-item"><span class="pass">✅ "' + text + '" 已正确翻译</span></div>';
+                    } else if (text.includes('30万QPS') || text.includes('30萬QPS')) {
+                        html += '<div class="status-item"><span class="fail">❌ "' + text + '" 未翻译成英文</span></div>';
+                    } else if (text.includes('300K QPS')) {
+                        html += '<div class="status-item"><span class="pass">✅ "' + text + '" 已正确翻译</span></div>';
+                    }
+                } else if (lang === 'zh-CN') {
+                    if (text.includes('头部电商')) {
+                        html += '<div class="status-item">简体中文: "' + text + '"</div>';
+                    } else if (text.includes('30万QPS')) {
+                        html += '<div class="status-item">简体中文: "' + text + '"</div>';
+                    }
+                } else if (lang === 'zh-TW') {
+                    if (text.includes('頭部電商')) {
+                        html += '<div class="status-item">繁體中文: "' + text + '"</div>';
+                    } else if (text.includes('30萬QPS')) {
+                        html += '<div class="status-item">繁體中文: "' + text + '"</div>';
+                    }
+                }
+            });
+            
+            if (lang === 'en' && html.includes('pass') && !html.includes('fail')) {
+                html += '<div class="status-item"><span class="pass">🎉 完美！所有文本都已正确翻译成英文！</span></div>';
+            }
+            
+            resultsDiv.innerHTML = html || '<p>当前语言: ' + lang + '</p>';
+        }
+
+        // 初始检查
+        setTimeout(() => {
+            checkTranslation(document.getElementById('lang-select').value);
+        }, 500);
+    </script>
+</body>
+</html>

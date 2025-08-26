@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test i18n</title>
+</head>
+<body>
+    <h1>Language Test</h1>
+    <p>Open this file in browser and check console for test results.</p>
+    
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const i18n = window.i18n;
+                if (!i18n) {
+                    console.error('i18n not loaded!');
+                    return;
+                }
+                
+                // Test translations
+                const langs = ['zh-CN', 'en', 'zh-TW'];
+                langs.forEach(lang => {
+                    const t = i18n.translations[lang];
+                    console.log(`\n=== Testing ${lang} ===`);
+                    
+                    // Check contact section
+                    console.log('Contact Info Title:', t.contact.infoTitle);
+                    console.log('Contact Info Subtitle:', t.contact.infoSubtitle);
+                    
+                    // Check timeline dates
+                    console.log('Timeline Dates:', t.about.timelineDates);
+                    
+                    // Check about paragraphs
+                    console.log('About Intro:', t.about.intro ? 'Present' : 'Missing');
+                    console.log('About University:', t.about.university ? 'Present' : 'Missing');
+                    console.log('About Current:', t.about.current ? 'Present' : 'Missing');
+                    
+                    // Check idols and achievements
+                    console.log('Idols Title:', t.about.idols);
+                    console.log('Achievements Title:', t.about.achievements);
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translation Test</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Translation Coverage Test</h1>
+    <p>Open console to see test results</p>
+    
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        function checkTranslations() {
+            const i18n = window.i18n;
+            if (!i18n) {
+                console.error('i18n not loaded!');
+                return;
+            }
+            
+            const langs = ['zh-CN', 'en', 'zh-TW'];
+            const requiredKeys = [
+                // Navigation
+                'nav.home', 'nav.journey', 'nav.about', 'nav.skills', 
+                'nav.portfolio', 'nav.blog', 'nav.contact',
+                
+                // Hero
+                'hero.name', 'hero.prefix', 'hero.tagline', 'hero.loading',
+                'hero.learnStory', 'hero.contactMe', 'hero.yearsExp', 
+                'hero.projects', 'hero.techStack',
+                
+                // Journey
+                'journey.title', 'journey.subtitle',
+                
+                // About
+                'about.title', 'about.subtitle', 'about.subheading',
+                'about.intro', 'about.university', 'about.current',
+                'about.idols', 'about.achievements',
+                'about.timelineDates.highschool', 'about.timelineDates.university', 
+                'about.timelineDates.present',
+                
+                // Skills
+                'skills.title', 'skills.subtitle', 'skills.expert',
+                'skills.proficient', 'skills.skilled', 
+                'skills.backend', 'skills.frontend',
+                
+                // Portfolio
+                'portfolio.title', 'portfolio.subtitle',
+                
+                // Blog
+                'blog.title', 'blog.subtitle',
+                
+                // Contact
+                'contact.title', 'contact.subtitle', 
+                'contact.infoTitle', 'contact.infoSubtitle',
+                
+                // Footer
+                'footer.aboutDesc', 'footer.quickLinks', 'footer.contact',
+                'footer.wechatScan', 'footer.copyright'
+            ];
+            
+            console.log('=== Translation Coverage Test ===\n');
+            
+            langs.forEach(lang => {
+                console.log(`\n--- Testing ${lang} ---`);
+                const t = i18n.translations[lang];
+                let missing = [];
+                
+                requiredKeys.forEach(key => {
+                    const keys = key.split('.');
+                    let value = t;
+                    for (const k of keys) {
+                        value = value?.[k];
+                    }
+                    if (!value) {
+                        missing.push(key);
+                    }
+                });
+                
+                if (missing.length === 0) {
+                    console.log('✅ All required translations present');
+                } else {
+                    console.log('❌ Missing translations:', missing);
+                }
+            });
+            
+            console.log('\n=== Sample Translations ===');
+            langs.forEach(lang => {
+                const t = i18n.translations[lang];
+                console.log(`\n${lang}:`);
+                console.log('- Loading:', t.hero?.loading);
+                console.log('- Journey Title:', t.journey?.title);
+                console.log('- Skills Backend:', t.skills?.backend);
+                console.log('- Timeline Highschool:', t.about?.timelineDates?.highschool);
+                console.log('- Contact Info Title:', t.contact?.infoTitle);
+                console.log('- Footer About:', t.footer?.aboutDesc?.substring(0, 50) + '...');
+            });
+        }
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkTranslations, 100);
+        });
+    </script>
+</body>
+</html>

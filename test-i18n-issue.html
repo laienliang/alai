@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国际化问题测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        .test-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .issue-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 3px;
+        }
+        .issue-text {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 3px;
+            margin: 5px;
+        }
+        .status-ok {
+            color: green;
+            font-weight: bold;
+        }
+        .status-fail {
+            color: red;
+            font-weight: bold;
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .test-results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换器 -->
+    <div class="lang-switcher">
+        <label for="lang-select">语言切换：</label>
+        <select id="lang-select">
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="zh-TW">繁體中文</option>
+        </select>
+    </div>
+
+    <div class="test-container">
+        <h1>国际化问题测试页面</h1>
+        <p>此页面用于测试国际化功能是否正常工作</p>
+
+        <!-- 测试部分1：硬编码的文本（问题所在） -->
+        <div class="test-section">
+            <div class="test-title">问题文本（直接硬编码在HTML中）</div>
+            <div class="issue-item">
+                <strong>关于我部分：</strong>
+                <span class="issue-text">人生偶像</span>
+                <span class="issue-text">荣誉成就</span>
+            </div>
+            <div class="issue-item">
+                <strong>项目标签：</strong>
+                <span class="issue-text">政企合作</span>
+                <span class="issue-text">供应链</span>
+                <span class="issue-text">农产品</span>
+                <span class="issue-text">流通体系</span>
+            </div>
+            <div class="issue-item">
+                <strong>技术标签：</strong>
+                <span class="issue-text">微服务架构</span>
+                <span class="issue-text">私域运营</span>
+                <span class="issue-text">全渠道</span>
+                <span class="issue-text">高并发</span>
+                <span class="issue-text">工作流</span>
+            </div>
+            <div class="issue-item">
+                <strong>统计数据：</strong>
+                <span class="issue-text">500+ 门店接入</span>
+                <span class="issue-text">全链路数字化</span>
+                <span class="issue-text">省级重点项目</span>
+                <span class="issue-text">覆盖全省农产品</span>
+            </div>
+            <div class="issue-item">
+                <strong>框架相关：</strong>
+                <span class="issue-text">核心框架</span>
+                <span class="issue-text">高可用</span>
+                <span class="issue-text">原创自研</span>
+                <span class="issue-text">1000+企业客户</span>
+            </div>
+            <div class="issue-item">
+                <strong>投资信息：</strong>
+                <span class="issue-text">上亿投资</span>
+                <span class="issue-text">带领6人团队</span>
+            </div>
+            <div class="issue-item">
+                <strong>联系方式：</strong>
+                <span class="issue-text">微信</span>
+                <span class="issue-text">扫码添加微信</span>
+                <span class="issue-text">邮箱</span>
+            </div>
+        </div>
+
+        <!-- 测试部分2：使用data-i18n属性的文本（正确实现） -->
+        <div class="test-section">
+            <div class="test-title">正确实现（使用data-i18n属性）</div>
+            <div class="issue-item">
+                <strong>导航菜单：</strong>
+                <span class="issue-text" data-i18n="nav.home">首页</span>
+                <span class="issue-text" data-i18n="nav.about">关于我</span>
+                <span class="issue-text" data-i18n="nav.contact">联系</span>
+            </div>
+            <div class="issue-item">
+                <strong>标题：</strong>
+                <span class="issue-text" data-i18n="about.title">关于我</span>
+                <span class="issue-text" data-i18n="skills.title">技术栈</span>
+            </div>
+        </div>
+
+        <!-- 测试结果 -->
+        <div class="test-results">
+            <h3>测试结果</h3>
+            <div id="test-results-content">
+                <p>请切换语言查看问题...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载国际化脚本 -->
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 监听语言切换并显示测试结果
+        document.getElementById('lang-select').addEventListener('change', function() {
+            setTimeout(() => {
+                const currentLang = this.value;
+                const resultsDiv = document.getElementById('test-results-content');
+                
+                // 检查硬编码文本是否变化
+                const hardcodedTexts = document.querySelectorAll('.test-section:first-child .issue-text');
+                let unchangedCount = 0;
+                
+                hardcodedTexts.forEach(text => {
+                    const originalText = text.textContent;
+                    // 这些文本应该在语言切换时改变，但因为是硬编码所以不会变
+                    if (currentLang === 'en' && originalText.match(/[\u4e00-\u9fa5]/)) {
+                        unchangedCount++;
+                    }
+                });
+                
+                if (currentLang === 'en') {
+                    if (unchangedCount > 0) {
+                        resultsDiv.innerHTML = `
+                            <p class="status-fail">❌ 发现问题：有 ${unchangedCount} 个硬编码的中文文本没有被翻译成英文</p>
+                            <p>原因：这些文本直接写在HTML中，没有使用 data-i18n 属性</p>
+                            <p>解决方案：需要为这些文本添加 data-i18n 属性，并在翻译文件中配置对应的翻译</p>
+                        `;
+                    } else {
+                        resultsDiv.innerHTML = `
+                            <p class="status-ok">✅ 所有文本都已正确翻译</p>
+                        `;
+                    }
+                } else if (currentLang === 'zh-CN') {
+                    resultsDiv.innerHTML = `
+                        <p>当前语言：简体中文</p>
+                        <p>请切换到英文查看问题</p>
+                    `;
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

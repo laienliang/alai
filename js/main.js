@@ -107,15 +107,25 @@ function initNavigation() {
  * 打字机效果
  */
 function initTypingEffect() {
-    const roles = [
-        "曾经的放牛娃",
-        "赤脚上学的少年",
-        "广东工业大学学子",
-        "电信高级工程师",
-        "唯品会架构师",
-        "AI创赢技术总监",
-        "永不停歇的追梦人"
+    // Default roles, will be updated by i18n
+    let roles = [
+        "工程师",
+        "架构师",
+        "技术总监",
+        "团队领导者",
+        "创业者",
+        "AI探索者"
     ];
+    
+    // Make typing animation globally accessible for i18n updates
+    window.typingAnimation = { 
+        roles: roles,
+        restart: function() {
+            currentRole = 0;
+            currentChar = 0;
+            isDeleting = false;
+        }
+    };
     
     let currentRole = 0;
     let currentChar = 0;
@@ -124,7 +134,9 @@ function initTypingEffect() {
     function type() {
         if (!elements.typingText) return;
         
-        const role = roles[currentRole];
+        // Use updated roles from i18n if available
+        const currentRoles = window.typingAnimation.roles || roles;
+        const role = currentRoles[currentRole];
         
         if (isDeleting) {
             elements.typingText.textContent = role.substring(0, currentChar - 1);
@@ -132,7 +144,7 @@ function initTypingEffect() {
             
             if (currentChar === 0) {
                 isDeleting = false;
-                currentRole = (currentRole + 1) % roles.length;
+                currentRole = (currentRole + 1) % currentRoles.length;
                 setTimeout(type, 500);
                 return;
             }

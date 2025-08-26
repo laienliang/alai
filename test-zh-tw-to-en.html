@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>繁體中文到英文切換測試</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f0f2f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        .lang-switcher select {
+            padding: 8px 12px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            background: white;
+        }
+        .test-group {
+            margin: 30px 0;
+            padding: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .test-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .test-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .test-label {
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .portfolio-item {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .portfolio-item h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .tech-tags, .portfolio-stats {
+            margin-top: 15px;
+        }
+        .tech-tags span, .portfolio-stats span {
+            display: inline-block;
+            margin: 5px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .tech-tags span {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #bbdefb;
+        }
+        .portfolio-stats span {
+            background: #fff3e0;
+            color: #f57c00;
+            border: 1px solid #ffe0b2;
+        }
+        .contact-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .info-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        .info-item h4 {
+            margin: 0 0 8px 0;
+            color: #495057;
+            font-size: 16px;
+        }
+        .info-item p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .status-box {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+        }
+        .status-box h3 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+        }
+        .check-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .check-pass {
+            color: #4ade80;
+        }
+        .check-fail {
+            color: #ff6b6b;
+        }
+        .about-sidebar {
+            display: flex;
+            gap: 20px;
+        }
+        .idols-section, .achievements-section {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .idols-section h4, .achievements-section h4 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 語言切換器 -->
+    <div class="lang-switcher">
+        <label for="lang-select">🌐 語言切換：</label>
+        <select id="lang-select">
+            <option value="zh-TW">繁體中文</option>
+            <option value="en">English</option>
+            <option value="zh-CN">简体中文</option>
+        </select>
+    </div>
+
+    <div class="test-container">
+        <h1>🔍 繁體中文→英文切換測試</h1>
+        <p class="subtitle">測試從繁體中文切換到英文時，所有文本是否正確翻譯</p>
+
+        <!-- 測試關於我部分 -->
+        <div class="test-group">
+            <div class="test-title">📝 關於我部分</div>
+            <div class="about-sidebar">
+                <div class="idols-section">
+                    <h4>人生偶像</h4>
+                    <p style="color: #666; font-size: 14px;">（應該變成 Life Idols）</p>
+                </div>
+                <div class="achievements-section">
+                    <h4>榮譽成就</h4>
+                    <p style="color: #666; font-size: 14px;">（應該變成 Achievements）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測試項目標籤 -->
+        <div class="test-group">
+            <div class="test-title">🏷️ 技術標籤測試</div>
+            
+            <div class="test-item">
+                <div class="test-label">架構相關標籤：</div>
+                <div class="tech-tags">
+                    <span>微服務架構</span>
+                    <span>私域運營</span>
+                    <span>全渠道</span>
+                    <span>高並發</span>
+                    <span>工作流</span>
+                </div>
+            </div>
+
+            <div class="test-item">
+                <div class="test-label">業務相關標籤：</div>
+                <div class="tech-tags">
+                    <span>政企合作</span>
+                    <span>供應鏈</span>
+                    <span>農產品</span>
+                    <span>流通體系</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測試統計數據 -->
+        <div class="test-group">
+            <div class="test-title">📊 統計數據測試</div>
+            
+            <div class="portfolio-item">
+                <h3>項目統計信息</h3>
+                <div class="portfolio-stats">
+                    <span>🔥 原創自研</span>
+                    <span>📈 1000+企業客戶</span>
+                    <span>🏪 500+ 門店接入</span>
+                    <span>📊 全鏈路數字化</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <h3>重點項目統計</h3>
+                <div class="portfolio-stats">
+                    <span>🏛️ 省級重點項目</span>
+                    <span>🌾 覆蓋全省農產品</span>
+                    <span>🔧 核心框架</span>
+                    <span>📊 高可用</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <h3>投資與團隊</h3>
+                <div class="portfolio-stats">
+                    <span>💰 上億投資</span>
+                    <span>👥 帶領6人團隊</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測試聯繫方式 -->
+        <div class="test-group">
+            <div class="test-title">📮 聯繫方式測試</div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <span class="info-icon">📧</span>
+                    <div>
+                        <h4>郵箱</h4>
+                        <p>lianglaiyang@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">💬</span>
+                    <div>
+                        <h4>微信</h4>
+                        <p>掃碼添加微信</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測試狀態 -->
+        <div class="status-box">
+            <h3>🎯 測試狀態</h3>
+            <div id="test-status">
+                <p>請切換到 English 查看測試結果...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 載入國際化腳本 -->
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 設置初始語言為繁體中文
+        setTimeout(() => {
+            const langSelect = document.getElementById('lang-select');
+            langSelect.value = 'zh-TW';
+            
+            // 監聽語言切換
+            langSelect.addEventListener('change', function(e) {
+                setTimeout(() => {
+                    runTests(e.target.value);
+                }, 300);
+            });
+            
+            // 初始測試
+            runTests('zh-TW');
+        }, 500);
+
+        function runTests(lang) {
+            const statusDiv = document.getElementById('test-status');
+            const results = [];
+            
+            if (lang === 'en') {
+                // 測試所有需要檢查的元素
+                const tests = [
+                    {
+                        selector: '.idols-section h4',
+                        expected: 'Life Idols',
+                        name: '人生偶像'
+                    },
+                    {
+                        selector: '.achievements-section h4',
+                        expected: ['Achievements', 'Honors & Achievements'],
+                        name: '榮譽成就'
+                    },
+                    {
+                        selector: '.info-item h4',
+                        multiple: true,
+                        checks: [
+                            { text: '郵箱', expected: 'Email' },
+                            { text: '微信', expected: 'WeChat' }
+                        ]
+                    },
+                    {
+                        selector: '.info-item p',
+                        multiple: true,
+                        checks: [
+                            { text: '掃碼添加微信', expected: 'Scan to add WeChat' }
+                        ]
+                    }
+                ];
+                
+                // 執行測試
+                tests.forEach(test => {
+                    if (test.multiple && test.checks) {
+                        const elements = document.querySelectorAll(test.selector);
+                        elements.forEach(el => {
+                            test.checks.forEach(check => {
+                                if (el.textContent.includes(check.text)) {
+                                    results.push({
+                                        name: check.text,
+                                        pass: false,
+                                        actual: el.textContent,
+                                        expected: check.expected
+                                    });
+                                } else if (el.textContent === check.expected) {
+                                    results.push({
+                                        name: check.text,
+                                        pass: true,
+                                        actual: el.textContent,
+                                        expected: check.expected
+                                    });
+                                }
+                            });
+                        });
+                    } else {
+                        const el = document.querySelector(test.selector);
+                        if (el) {
+                            const pass = Array.isArray(test.expected) 
+                                ? test.expected.includes(el.textContent)
+                                : el.textContent === test.expected;
+                            results.push({
+                                name: test.name,
+                                pass: pass,
+                                actual: el.textContent,
+                                expected: Array.isArray(test.expected) ? test.expected.join(' or ') : test.expected
+                            });
+                        }
+                    }
+                });
+                
+                // 檢查技術標籤
+                const techTags = document.querySelectorAll('.tech-tags span');
+                let chineseCount = 0;
+                let englishCount = 0;
+                techTags.forEach(tag => {
+                    if (tag.textContent.match(/[\u4e00-\u9fa5]/)) {
+                        chineseCount++;
+                    } else {
+                        englishCount++;
+                    }
+                });
+                
+                // 檢查統計數據
+                const stats = document.querySelectorAll('.portfolio-stats span');
+                let statsChinese = 0;
+                let statsEnglish = 0;
+                stats.forEach(stat => {
+                    const text = stat.textContent;
+                    if (text.match(/[\u4e00-\u9fa5]/) && !text.includes('QPS')) {
+                        statsChinese++;
+                    } else if (text.includes('Original') || text.includes('Enterprise') || 
+                               text.includes('Stores') || text.includes('Digital') ||
+                               text.includes('Provincial') || text.includes('Coverage') ||
+                               text.includes('Framework') || text.includes('Availability') ||
+                               text.includes('Investment') || text.includes('Leading')) {
+                        statsEnglish++;
+                    }
+                });
+                
+                // 顯示結果
+                let html = '<div>';
+                results.forEach(result => {
+                    const icon = result.pass ? '✅' : '❌';
+                    const className = result.pass ? 'check-pass' : 'check-fail';
+                    html += `<div class="check-item ${className}">${icon} ${result.name}: ${result.actual} ${result.pass ? '' : '(應該是: ' + result.expected + ')'}</div>`;
+                });
+                
+                html += `<div class="check-item">📊 技術標籤: ${englishCount} 個已翻譯, ${chineseCount} 個未翻譯</div>`;
+                html += `<div class="check-item">📈 統計數據: ${statsEnglish} 個已翻譯, ${statsChinese} 個未翻譯</div>`;
+                
+                const allPass = results.every(r => r.pass) && chineseCount === 0 && statsChinese === 0;
+                if (allPass) {
+                    html += '<div style="margin-top: 20px; font-size: 18px;" class="check-pass">🎉 完美！所有文本都已正確翻譯！</div>';
+                } else {
+                    html += '<div style="margin-top: 20px; font-size: 18px;" class="check-fail">⚠️ 還有一些文本需要修復</div>';
+                }
+                html += '</div>';
+                
+                statusDiv.innerHTML = html;
+            } else if (lang === 'zh-TW') {
+                statusDiv.innerHTML = '<p>當前語言：繁體中文</p><p style="color: #ffd93d;">💡 提示：請切換到 English 查看測試結果</p>';
+            } else if (lang === 'zh-CN') {
+                statusDiv.innerHTML = '<p>当前语言：简体中文</p><p style="color: #ffd93d;">💡 提示：请切换到 English 查看测试结果</p>';
+            }
+        }
+    </script>
+</body>
+</html>

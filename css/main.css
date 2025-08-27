@@ -473,10 +473,12 @@ for a more impressive loading experience with:
 }
 
 .hero-stats {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   gap: var(--space-3xl);
   margin-bottom: var(--space-2xl);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .stat-item {
@@ -487,13 +489,17 @@ for a more impressive loading experience with:
   display: block;
   font-size: var(--text-3xl);
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   margin-bottom: var(--space-xs);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .stat-label {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   font-size: var(--text-sm);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .hero-buttons {

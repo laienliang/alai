@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBlog();
     initContactForm();
     initParticles();
+    // 确保统计数字立即可见
+    forceShowStats();
     hideLoadingScreen();
 });
 
@@ -348,6 +350,94 @@ function animateNumber(element, start, end, duration, showPlus = false) {
             requestAnimationFrame(update);
         } else if (showPlus) {
             element.textContent = end;
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+/**
+ * 强制显示统计数字
+ */
+function forceShowStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statItems = document.querySelectorAll('.stat-item');
+    
+    // 添加淡入动画到统计项
+    statItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease';
+        
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 200 + 300);
+    });
+    
+    statNumbers.forEach((stat, index) => {
+        // 确保元素可见
+        stat.style.display = 'block';
+        stat.style.opacity = '1';
+        stat.style.visibility = 'visible';
+        
+        // 先显示0，然后启动动画
+        stat.textContent = '0';
+        
+        // 启动数字动画，每个数字延迟一点时间
+        const target = parseInt(stat.dataset.target) || 0;
+        setTimeout(() => {
+            animateNumberWithEffect(stat, 0, target, 2500);
+        }, index * 200 + 800);
+    });
+    
+    // 确保标签也可见
+    const statLabels = document.querySelectorAll('.stat-label');
+    statLabels.forEach((label, index) => {
+        label.style.display = 'block';
+        label.style.opacity = '0';
+        label.style.visibility = 'visible';
+        label.style.transition = 'opacity 0.4s ease';
+        
+        setTimeout(() => {
+            label.style.opacity = '1';
+        }, index * 200 + 1000);
+    });
+}
+
+/**
+ * 带特效的数字动画
+ */
+function animateNumberWithEffect(element, start, end, duration) {
+    const startTime = performance.now();
+    
+    // 添加发光效果
+    element.style.textShadow = '0 0 20px rgba(52, 152, 219, 0.8)';
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // 使用easeOutQuart缓动函数
+        const easeProgress = 1 - Math.pow(1 - progress, 4);
+        const current = Math.floor(easeProgress * (end - start) + start);
+        element.textContent = current;
+        
+        // 动画过程中的闪烁效果
+        if (progress < 0.9) {
+            const intensity = 0.4 + 0.6 * Math.sin(elapsed * 0.02);
+            element.style.textShadow = `0 0 20px rgba(52, 152, 219, ${intensity})`;
+        }
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            // 动画完成，恢复正常效果
+            element.textContent = end;
+            element.style.textShadow = '0 2px 4px rgba(52, 152, 219, 0.3)';
+            
+            // 完成时的脉冲效果
+            element.style.animation = 'statsComplete 0.6s ease';
         }
     }
     
@@ -917,6 +1007,37 @@ style.textContent = `
         transform: translateX(100%);
         opacity: 0;
     }
+}
+
+@keyframes statsComplete {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 25px rgba(52, 152, 219, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+    }
+}
+
+@keyframes statsPulse {
+    0%, 100% {
+        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.1);
+    }
+    50% {
+        box-shadow: 0 15px 35px rgba(52, 152, 219, 0.2);
+    }
+}
+
+.stat-item {
+    animation: statsPulse 4s ease-in-out infinite;
+}
+
+.stat-item:hover {
+    animation: none;
 }
 `;
 document.head.appendChild(style);

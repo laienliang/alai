@@ -202,6 +202,13 @@ class I18nManager {
                 blog: {
                     title: '知识分享',
                     subtitle: '技术心得、管理经验、人生感悟',
+                    category: {
+                        all: '全部',
+                        tech: '技术文章',
+                        management: '管理心得',
+                        life: '人生感悟',
+                        philosophy: '玄学探讨'
+                    },
                     categories: {
                         all: '全部',
                         tech: '技术文章',
@@ -209,8 +216,25 @@ class I18nManager {
                         life: '人生感悟',
                         philosophy: '玄学探讨'
                     },
+                    readmore: '阅读更多 →',
                     readMore: '阅读更多 →',
                     minRead: '分钟阅读',
+                    readtime: {
+                        10: '10分钟阅读',
+                        20: '20分钟阅读'
+                    },
+                    backToList: '← 返回博客列表',
+                    prevPost: '上一篇',
+                    nextPost: '下一篇',
+                    loading: '加载中...',
+                    wangyangming: {
+                        title: '王阳明心学在技术管理中的应用',
+                        excerpt: '知行合一的理念如何指导技术团队管理，打造高效能团队...'
+                    },
+                    highconcurrency: {
+                        title: '如何构建支撑30万QPS的高并发系统',
+                        excerpt: '从唯品会的实践经验出发，详解高并发系统的架构设计要点...'
+                    },
                     posts: [
                         {
                             category: '人生感悟',
@@ -433,6 +457,13 @@ class I18nManager {
                 blog: {
                     title: 'Knowledge Sharing',
                     subtitle: 'Technical insights, management experience, life wisdom',
+                    category: {
+                        all: 'All',
+                        tech: 'Technical',
+                        management: 'Management',
+                        life: 'Life',
+                        philosophy: 'Philosophy'
+                    },
                     categories: {
                         all: 'All',
                         tech: 'Technical',
@@ -440,8 +471,25 @@ class I18nManager {
                         life: 'Life',
                         philosophy: 'Philosophy'
                     },
+                    readmore: 'Read More →',
                     readMore: 'Read More →',
                     minRead: 'min read',
+                    readtime: {
+                        10: '10 min read',
+                        20: '20 min read'
+                    },
+                    backToList: '← Back to Blog List',
+                    prevPost: 'Previous',
+                    nextPost: 'Next',
+                    loading: 'Loading...',
+                    wangyangming: {
+                        title: 'Applying Wang Yangming Philosophy in Tech Management',
+                        excerpt: 'How the concept of unity of knowledge and action guides tech team management to build high-performance teams...'
+                    },
+                    highconcurrency: {
+                        title: 'Building a System Supporting 300K QPS',
+                        excerpt: 'Drawing from VIPShop practical experience, detailing key points of high-concurrency system architecture design...'
+                    },
                     posts: [
                         {
                             category: 'Life',
@@ -664,6 +712,13 @@ class I18nManager {
                 blog: {
                     title: '知識分享',
                     subtitle: '技術心得、管理經驗、人生感悟',
+                    category: {
+                        all: '全部',
+                        tech: '技術文章',
+                        management: '管理心得',
+                        life: '人生感悟',
+                        philosophy: '玄學探討'
+                    },
                     categories: {
                         all: '全部',
                         tech: '技術文章',
@@ -671,8 +726,25 @@ class I18nManager {
                         life: '人生感悟',
                         philosophy: '玄學探討'
                     },
+                    readmore: '閱讀更多 →',
                     readMore: '閱讀更多 →',
                     minRead: '分鐘閱讀',
+                    readtime: {
+                        10: '10分鐘閱讀',
+                        20: '20分鐘閱讀'
+                    },
+                    backToList: '← 返回部落格列表',
+                    prevPost: '上一篇',
+                    nextPost: '下一篇',
+                    loading: '載入中...',
+                    wangyangming: {
+                        title: '王陽明心學在技術管理中的應用',
+                        excerpt: '知行合一的理念如何指導技術團隊管理，打造高效能團隊...'
+                    },
+                    highconcurrency: {
+                        title: '如何構建支撐30萬QPS的高並發系統',
+                        excerpt: '從唯品會的實踐經驗出發，詳解高並發系統的架構設計要點...'
+                    },
                     posts: [
                         {
                             category: '人生感悟',
@@ -757,6 +829,29 @@ class I18nManager {
     }
     
     updateElementsWithI18n(t) {
+        // Generic data-i18n handler for all elements
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (!key) return;
+            
+            // Split the key by dots to navigate nested objects
+            const keys = key.split('.');
+            let value = t;
+            
+            for (const k of keys) {
+                if (value && typeof value === 'object' && k in value) {
+                    value = value[k];
+                } else {
+                    value = null;
+                    break;
+                }
+            }
+            
+            if (value && typeof value === 'string') {
+                element.textContent = value;
+            }
+        });
+        
         // Loading text
         const loaderText = document.querySelector('.loader-text');
         if (loaderText) loaderText.textContent = t.hero.loading;

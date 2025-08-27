@@ -211,42 +211,19 @@ section {
 }
 
 /* ==========================================
-   Loading Screen
+   Loading Screen - OLD STYLES (Replaced by advanced-loading.css)
    ========================================== */
 
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg-primary);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.5s ease;
-}
-
-.loading-screen.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loader {
-  text-align: center;
-}
-
-.loader-text {
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  animation: pulse 1.5s ease infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
+/* 
+Note: Basic loading screen styles have been moved to advanced-loading.css
+for a more impressive loading experience with:
+- Animated tech circles
+- Binary code rain effect
+- Typing text animation
+- Progress bar with gradient flow
+- Particle background
+- Multi-language support
+*/
 
 /* ==========================================
    Navigation

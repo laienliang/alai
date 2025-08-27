@@ -1,0 +1,431 @@
+/* ==========================================
+   Elegant Loading Screen - 简洁优雅版本
+   ========================================== */
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.loading-screen.hide {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+/* ==========================================
+   Background Effects - 简化版
+   ========================================== */
+
+.bg-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* 简化的渐变背景 */
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, 
+    rgba(102, 126, 234, 0.1) 0%, 
+    transparent 70%);
+  animation: subtleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
+
+/* 简化的网格 - 只保留几条关键线 */
+.tech-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+}
+
+.grid-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+  animation: gridPulse 3s ease-in-out infinite var(--delay);
+}
+
+.grid-h {
+  width: 100%;
+  height: 1px;
+  top: var(--pos);
+}
+
+.grid-v {
+  width: 1px;
+  height: 100%;
+  left: var(--pos);
+  background: linear-gradient(0deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+/* ==========================================
+   主要加载动画 - 极简设计
+   ========================================== */
+
+.loader-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+
+/* 核心加载器 - 简洁的三环设计 */
+.loader-core {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.loading-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring-outer {
+  width: 120px;
+  height: 120px;
+  border-top-color: #667eea;
+  border-right-color: #667eea;
+  animation: ringRotate 2s linear infinite;
+}
+
+.ring-middle {
+  width: 80px;
+  height: 80px;
+  border-bottom-color: #764ba2;
+  border-left-color: #764ba2;
+  animation: ringRotate 1.5s linear infinite reverse;
+}
+
+.ring-inner {
+  width: 40px;
+  height: 40px;
+  border-top-color: #f093fb;
+  border-right-color: #f093fb;
+  animation: ringRotate 1s linear infinite;
+}
+
+@keyframes ringRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 中心点 */
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #667eea, #f093fb);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: centerPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+}
+
+@keyframes centerPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   文字效果 - 简洁版
+   ========================================== */
+
+.loader-text-container {
+  color: white;
+  max-width: 400px;
+}
+
+/* 主标题 */
+.main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 打字机效果 */
+.typing-text {
+  display: inline;
+}
+
+.typing-cursor {
+  animation: cursorBlink 1s step-start infinite;
+  color: #667eea;
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 副标题 */
+.subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  animation: subtleFade 2s ease-in-out infinite alternate;
+}
+
+@keyframes subtleFade {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.9; }
+}
+
+/* ==========================================
+   进度条 - 极简设计
+   ========================================== */
+
+.loading-progress {
+  width: 320px;
+  max-width: 80vw;
+}
+
+.progress-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+  animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+  0% { opacity: 0; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(-10px); }
+  100% { opacity: 0; transform: translateX(-20px); }
+}
+
+/* 进度信息 */
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.progress-text {
+  color: #667eea;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+.loading-status {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+/* ==========================================
+   装饰性粒子 - 极简版
+   ========================================== */
+
+.particles-simple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.simple-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #667eea;
+  border-radius: 50%;
+  left: var(--x);
+  top: var(--y);
+  animation: particleFloat 6s ease-in-out infinite var(--delay);
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+}
+
+/* ==========================================
+   响应式设计
+   ========================================== */
+
+@media (max-width: 768px) {
+  .loader-core {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .ring-outer { width: 100px; height: 100px; }
+  .ring-middle { width: 70px; height: 70px; }
+  .ring-inner { width: 35px; height: 35px; }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .loading-progress {
+    width: 280px;
+  }
+  
+  .loader-container {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader-core {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .ring-outer { width: 80px; height: 80px; }
+  .ring-middle { width: 55px; height: 55px; }
+  .ring-inner { width: 30px; height: 30px; }
+  
+  .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .loading-progress {
+    width: 240px;
+  }
+}
+
+/* ==========================================
+   主题兼容性
+   ========================================== */
+
+[data-theme="light"] .loading-screen {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+[data-theme="light"] .main-title,
+[data-theme="light"] .subtitle,
+[data-theme="light"] .loading-status {
+  color: #333;
+}
+
+[data-theme="light"] .progress-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .simple-particle {
+  background: #495057;
+}
+
+/* ==========================================
+   性能优化
+   ========================================== */
+
+.loading-screen * {
+  will-change: transform, opacity;
+}
+
+/* 无障碍支持 */
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen * {
+    animation-duration: 0.1s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="css/fixes.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/contact-compact.css">
+    <link rel="stylesheet" href="css/ultra-loading.css">
     
     <!-- Favicon -->
     <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
@@ -67,8 +68,58 @@
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <div class="loader">
-            <div class="loader-text">正在加载...</div>
+        <!-- 简化的背景效果 -->
+        <div class="bg-layers">
+            <div class="bg-gradient"></div>
+            <!-- 只保留几条关键网格线 -->
+            <div class="tech-grid">
+                <div class="grid-line grid-h" style="--pos: 30%; --delay: 0s;"></div>
+                <div class="grid-line grid-h" style="--pos: 70%; --delay: 1s;"></div>
+                <div class="grid-line grid-v" style="--pos: 25%; --delay: 0.5s;"></div>
+                <div class="grid-line grid-v" style="--pos: 75%; --delay: 1.5s;"></div>
+            </div>
+        </div>
+        
+        <div class="loader-container">
+            <!-- 简洁的核心加载动画 -->
+            <div class="loader-core">
+                <div class="loading-ring ring-outer"></div>
+                <div class="loading-ring ring-middle"></div>
+                <div class="loading-ring ring-inner"></div>
+                <div class="center-dot"></div>
+            </div>
+            
+            <!-- 简洁的文字效果 -->
+            <div class="loader-text-container">
+                <div class="main-title">
+                    <span class="typing-text" data-zh="正在加载" data-en="Loading" data-tw="載入中">正在加载</span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <div class="subtitle" data-zh="初始化..." data-en="Initializing AI Chuangying System..." data-tw="初始化...">
+                    初始化...
+                </div>
+            </div>
+            
+            <!-- 简洁的进度条 -->
+            <div class="loading-progress">
+                <div class="progress-wrapper">
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <span class="progress-text">0%</span>
+                    <span class="loading-status">准备中</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 极简装饰粒子 -->
+        <div class="particles-simple">
+            <div class="simple-particle" style="--x: 15%; --y: 25%; --delay: 0s;"></div>
+            <div class="simple-particle" style="--x: 85%; --y: 30%; --delay: 1s;"></div>
+            <div class="simple-particle" style="--x: 25%; --y: 75%; --delay: 2s;"></div>
+            <div class="simple-particle" style="--x: 75%; --y: 20%; --delay: 3s;"></div>
         </div>
     </div>
 
@@ -872,27 +923,27 @@
                 
                 <article class="blog-card" data-category="management">
                     <div class="blog-header">
-                        <span class="blog-category">管理心得</span>
+                        <span class="blog-category" data-i18n="blog.category.management">管理心得</span>
                         <span class="blog-date">2024.01.10</span>
                     </div>
-                    <h3 class="blog-title">王阳明心学在技术管理中的应用</h3>
-                    <p class="blog-excerpt">知行合一的理念如何指导技术团队管理，打造高效能团队...</p>
+                    <h3 class="blog-title" data-i18n="blog.wangyangming.title">王阳明心学在技术管理中的应用</h3>
+                    <p class="blog-excerpt" data-i18n="blog.wangyangming.excerpt">知行合一的理念如何指导技术团队管理，打造高效能团队...</p>
                     <div class="blog-footer">
-                        <span class="read-time">10分钟阅读</span>
-                        <a href="blog-detail.html?id=wangyang-ming-tech" class="read-more">阅读更多 →</a>
+                        <span class="read-time" data-i18n="blog.readtime.10">10分钟阅读</span>
+                        <a href="blog-detail.html?id=wangyang-ming-tech" class="read-more" data-i18n="blog.readmore">阅读更多 →</a>
                     </div>
                 </article>
                 
                 <article class="blog-card" data-category="tech">
                     <div class="blog-header">
-                        <span class="blog-category">技术文章</span>
+                        <span class="blog-category" data-i18n="blog.category.tech">技术文章</span>
                         <span class="blog-date">2024.01.05</span>
                     </div>
-                    <h3 class="blog-title">如何构建支撑30万QPS的高并发系统</h3>
-                    <p class="blog-excerpt">从唯品会的实践经验出发，详解高并发系统的架构设计要点...</p>
+                    <h3 class="blog-title" data-i18n="blog.highconcurrency.title">如何构建支撑30万QPS的高并发系统</h3>
+                    <p class="blog-excerpt" data-i18n="blog.highconcurrency.excerpt">从唯品会的实践经验出发，详解高并发系统的架构设计要点...</p>
                     <div class="blog-footer">
-                        <span class="read-time">20分钟阅读</span>
-                        <a href="blog-detail.html?id=high-concurrency-architecture" class="read-more">阅读更多 →</a>
+                        <span class="read-time" data-i18n="blog.readtime.20">20分钟阅读</span>
+                        <a href="blog-detail.html?id=high-concurrency-architecture" class="read-more" data-i18n="blog.readmore">阅读更多 →</a>
                     </div>
                 </article>
             </div>

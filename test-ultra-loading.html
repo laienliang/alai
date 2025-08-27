@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Loading Screen Test</title>
+    <link rel="stylesheet" href="css/ultra-loading.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .test-content {
+            padding: 2rem;
+            text-align: center;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .test-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Ultra Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <!-- Background Effects -->
+        <div class="bg-layers">
+            <!-- Animated Gradient Background -->
+            <div class="bg-gradient"></div>
+            
+            <!-- Tech Grid -->
+            <div class="tech-grid">
+                <div class="grid-line grid-h" style="--pos: 20%; --delay: 0s;"></div>
+                <div class="grid-line grid-h" style="--pos: 40%; --delay: 0.5s;"></div>
+                <div class="grid-line grid-h" style="--pos: 60%; --delay: 1s;"></div>
+                <div class="grid-line grid-h" style="--pos: 80%; --delay: 1.5s;"></div>
+                <div class="grid-line grid-v" style="--pos: 25%; --delay: 0.2s;"></div>
+                <div class="grid-line grid-v" style="--pos: 50%; --delay: 0.7s;"></div>
+                <div class="grid-line grid-v" style="--pos: 75%; --delay: 1.2s;"></div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="floating-elements">
+                <div class="float-element" style="--x: 15%; --y: 25%; --delay: 0s;">⚡</div>
+                <div class="float-element" style="--x: 85%; --y: 15%; --delay: 0.5s;">🚀</div>
+                <div class="float-element" style="--x: 10%; --y: 75%; --delay: 1s;">💻</div>
+                <div class="float-element" style="--x: 90%; --y: 65%; --delay: 1.5s;">🔥</div>
+                <div class="float-element" style="--x: 50%; --y: 5%; --delay: 2s;">⭐</div>
+                <div class="float-element" style="--x: 25%; --y: 85%; --delay: 2.5s;">🎯</div>
+            </div>
+        </div>
+        
+        <div class="loader-container">
+            <!-- Core Loading Animation -->
+            <div class="loader-core">
+                <!-- DNA Helix Loader -->
+                <div class="dna-loader">
+                    <div class="dna-strand strand-1"></div>
+                    <div class="dna-strand strand-2"></div>
+                    <div class="dna-base base-1"></div>
+                    <div class="dna-base base-2"></div>
+                    <div class="dna-base base-3"></div>
+                    <div class="dna-base base-4"></div>
+                </div>
+                
+                <!-- Pulse Rings -->
+                <div class="pulse-rings">
+                    <div class="pulse-ring ring-1"></div>
+                    <div class="pulse-ring ring-2"></div>
+                    <div class="pulse-ring ring-3"></div>
+                </div>
+                
+                <!-- Orbiting Elements -->
+                <div class="orbital-system">
+                    <div class="orbit orbit-1">
+                        <div class="planet planet-1">AI</div>
+                    </div>
+                    <div class="orbit orbit-2">
+                        <div class="planet planet-2">⚡</div>
+                    </div>
+                    <div class="orbit orbit-3">
+                        <div class="planet planet-3">🔮</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Matrix Code Rain -->
+            <div class="matrix-rain">
+                <div class="matrix-column" style="--delay: 0s; --pos: 10%;">
+                    <span>梁</span><span>来</span><span>养</span><span>A</span><span>I</span>
+                </div>
+                <div class="matrix-column" style="--delay: 0.3s; --pos: 25%;">
+                    <span>0</span><span>1</span><span>创</span><span>赢</span><span>1</span>
+                </div>
+                <div class="matrix-column" style="--delay: 0.6s; --pos: 40%;">
+                    <span>技</span><span>术</span><span>0</span><span>1</span><span>总</span>
+                </div>
+                <div class="matrix-column" style="--delay: 0.9s; --pos: 55%;">
+                    <span>1</span><span>监</span><span>AI</span><span>0</span><span>1</span>
+                </div>
+                <div class="matrix-column" style="--delay: 1.2s; --pos: 70%;">
+                    <span>未</span><span>来</span><span>1</span><span>0</span><span>智</span>
+                </div>
+                <div class="matrix-column" style="--delay: 1.5s; --pos: 85%;">
+                    <span>能</span><span>1</span><span>0</span><span>领</span><span>袖</span>
+                </div>
+            </div>
+            
+            <!-- Loading Text with Hologram Effect -->
+            <div class="loader-text-container">
+                <div class="hologram-text">
+                    <div class="text-layer layer-1">
+                        <span class="typing-text">正在加载</span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    <div class="text-layer layer-2">
+                        <span class="typing-text">正在加载</span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    <div class="text-layer layer-3">
+                        <span class="typing-text">正在加载</span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                </div>
+                <div class="loader-subtitle">
+                    <div class="glitch-text">
+                        <span class="glitch-main">初始化AI创赢系统...</span>
+                        <span class="glitch-copy">初始化AI创赢系统...</span>
+                        <span class="glitch-copy">初始化AI创赢系统...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Progress System -->
+            <div class="loading-progress">
+                <div class="progress-container">
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                        <div class="progress-glow"></div>
+                        <div class="progress-sparks">
+                            <div class="spark spark-1"></div>
+                            <div class="spark spark-2"></div>
+                            <div class="spark spark-3"></div>
+                        </div>
+                    </div>
+                    <div class="progress-markers">
+                        <div class="marker" style="left: 20%;">20</div>
+                        <div class="marker" style="left: 40%;">40</div>
+                        <div class="marker" style="left: 60%;">60</div>
+                        <div class="marker" style="left: 80%;">80</div>
+                        <div class="marker" style="left: 100%;">100</div>
+                    </div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">进度</span>
+                        <span class="stat-value progress-text">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">状态</span>
+                        <span class="stat-value loading-status">准备中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Particle Systems -->
+        <div class="particles-system">
+            <!-- Energy Particles -->
+            <div class="energy-particles">
+                <div class="energy-particle" style="--delay: 0s; --x: 20%; --y: 30%;"></div>
+                <div class="energy-particle" style="--delay: 0.5s; --x: 80%; --y: 20%;"></div>
+                <div class="energy-particle" style="--delay: 1s; --x: 60%; --y: 70%;"></div>
+                <div class="energy-particle" style="--delay: 1.5s; --x: 30%; --y: 80%;"></div>
+                <div class="energy-particle" style="--delay: 2s; --x: 90%; --y: 60%;"></div>
+                <div class="energy-particle" style="--delay: 2.5s; --x: 10%; --y: 50%;"></div>
+            </div>
+            
+            <!-- Connection Lines -->
+            <svg class="connection-lines" width="100%" height="100%">
+                <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:0" />
+                        <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0" />
+                    </linearGradient>
+                </defs>
+                <g class="lines-container">
+                    <!-- Dynamic lines will be generated by JavaScript -->
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <div class="test-content" style="display: none;">
+        <h1>🎉 Ultra Loading Test Complete!</h1>
+        <p>加载效果已完成，页面已就绪！</p>
+        <button class="test-button" onclick="showLoading()">重新播放加载效果</button>
+        <button class="test-button" onclick="location.reload()">刷新页面</button>
+    </div>
+
+    <script>
+        // 模拟快速加载过程
+        function simulateLoading() {
+            const steps = [
+                { progress: 30, status: '加载中...', delay: 150 },
+                { progress: 60, status: '初始化...', delay: 120 },
+                { progress: 90, status: '准备完成...', delay: 100 },
+                { progress: 100, status: '完成！', delay: 80 }
+            ];
+            
+            let currentStep = 0;
+            
+            function executeStep() {
+                if (currentStep < steps.length) {
+                    const step = steps[currentStep];
+                    setTimeout(() => {
+                        updateProgress(step.progress);
+                        updateStatus(step.status);
+                        currentStep++;
+                        executeStep();
+                    }, step.delay);
+                } else {
+                    setTimeout(() => {
+                        hideLoadingScreen();
+                    }, 300);
+                }
+            }
+            
+            executeStep();
+        }
+        
+        function updateProgress(percentage) {
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            const progressGlow = document.querySelector('.progress-glow');
+            
+            if (progressFill) {
+                progressFill.style.width = percentage + '%';
+            }
+            
+            if (progressText) {
+                progressText.textContent = percentage + '%';
+            }
+            
+            if (progressGlow && percentage > 10) {
+                progressGlow.style.opacity = '1';
+            }
+        }
+        
+        function updateStatus(status) {
+            const statusElement = document.querySelector('.loading-status');
+            const glitchMain = document.querySelector('.glitch-main');
+            const glitchCopies = document.querySelectorAll('.glitch-copy');
+            
+            if (statusElement) {
+                statusElement.textContent = status;
+            }
+            
+            if (glitchMain) {
+                glitchMain.textContent = status;
+                glitchCopies.forEach(copy => {
+                    copy.textContent = status;
+                });
+            }
+        }
+        
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const testContent = document.querySelector('.test-content');
+            
+            if (loadingScreen) {
+                loadingScreen.classList.add('hide');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    testContent.style.display = 'block';
+                }, 600);
+            }
+        }
+        
+        function showLoading() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const testContent = document.querySelector('.test-content');
+            
+            testContent.style.display = 'none';
+            loadingScreen.style.display = 'flex';
+            loadingScreen.classList.remove('hide');
+            
+            // 重置进度
+            updateProgress(0);
+            updateStatus('准备中');
+            
+            setTimeout(() => {
+                simulateLoading();
+            }, 100);
+        }
+        
+        // 页面加载完成后开始加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                simulateLoading();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

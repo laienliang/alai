@@ -613,17 +613,254 @@ function initParticles() {
 }
 
 /**
- * 隐藏加载屏幕
+ * 超级加载屏幕控制 - 快速版本
  */
 function hideLoadingScreen() {
-    setTimeout(() => {
-        if (elements.loadingScreen) {
-            elements.loadingScreen.classList.add('hide');
+    // 立即开始加载动画
+    startLoadingAnimation();
+    
+    // 优化的快速加载步骤
+    const loadingSteps = [
+        { progress: 30, text: 'Loading resources...', delay: 200 },
+        { progress: 60, text: 'Initializing...', delay: 150 },
+        { progress: 90, text: 'Ready...', delay: 100 },
+        { progress: 100, text: 'Complete!', delay: 100 }
+    ];
+    
+    let currentStep = 0;
+    
+    function executeLoadingStep() {
+        if (currentStep < loadingSteps.length) {
+            const step = loadingSteps[currentStep];
             setTimeout(() => {
-                elements.loadingScreen.style.display = 'none';
-            }, 500);
+                updateLoadingProgress(step.progress);
+                updateLoadingText(step.text);
+                currentStep++;
+                executeLoadingStep();
+            }, step.delay);
+        } else {
+            // 快速完成加载动画
+            setTimeout(() => {
+                if (elements.loadingScreen) {
+                    elements.loadingScreen.classList.add('hide');
+                    setTimeout(() => {
+                        elements.loadingScreen.style.display = 'none';
+                    }, 600);
+                }
+            }, 200);
         }
-    }, 1000);
+    }
+    
+    executeLoadingStep();
+}
+
+/**
+ * 启动加载动画
+ */
+function startLoadingAnimation() {
+    // 更新加载文本的语言
+    updateLoadingLanguage();
+    
+    // 启动打字机效果
+    startTypingEffect();
+    
+    // 启动连接线动画
+    startConnectionLines();
+}
+
+/**
+ * 启动连接线动画
+ */
+function startConnectionLines() {
+    const svg = document.querySelector('.connection-lines');
+    const container = svg?.querySelector('.lines-container');
+    
+    if (!container) return;
+    
+    const particles = document.querySelectorAll('.energy-particle');
+    
+    function createConnectionLine(start, end) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', start.x);
+        line.setAttribute('y1', start.y);
+        line.setAttribute('x2', end.x);
+        line.setAttribute('y2', end.y);
+        line.setAttribute('stroke', 'url(#lineGradient)');
+        line.setAttribute('stroke-width', '1');
+        line.setAttribute('opacity', '0.6');
+        
+        const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+        animate.setAttribute('attributeName', 'opacity');
+        animate.setAttribute('values', '0;0.8;0');
+        animate.setAttribute('dur', '2s');
+        animate.setAttribute('repeatCount', 'indefinite');
+        
+        line.appendChild(animate);
+        return line;
+    }
+    
+    function updateConnections() {
+        // 清除现有连接
+        container.innerHTML = '';
+        
+        // 获取粒子位置
+        const positions = Array.from(particles).map(particle => {
+            const rect = particle.getBoundingClientRect();
+            const svgRect = svg.getBoundingClientRect();
+            return {
+                x: rect.left - svgRect.left + rect.width / 2,
+                y: rect.top - svgRect.top + rect.height / 2
+            };
+        });
+        
+        // 创建连接线（只连接相邻的粒子）
+        for (let i = 0; i < positions.length - 1; i++) {
+            if (Math.random() > 0.5) { // 50%概率创建连接
+                const line = createConnectionLine(positions[i], positions[i + 1]);
+                container.appendChild(line);
+            }
+        }
+    }
+    
+    // 初始化连接
+    setTimeout(updateConnections, 500);
+    
+    // 定期更新连接线
+    setInterval(updateConnections, 3000);
+}
+
+/**
+ * 更新加载进度
+ */
+function updateLoadingProgress(percentage) {
+    const progressFill = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
+    const progressGlow = document.querySelector('.progress-glow');
+    
+    if (progressFill) {
+        progressFill.style.width = percentage + '%';
+    }
+    
+    if (progressText) {
+        progressText.textContent = percentage + '%';
+    }
+    
+    // 启动光效
+    if (progressGlow && percentage > 10) {
+        progressGlow.style.opacity = '1';
+        progressGlow.style.animation = 'progressGlow 1s ease-in-out';
+    }
+    
+    // 触发闪烁效果
+    if (percentage >= 100) {
+        const sparks = document.querySelectorAll('.spark');
+        sparks.forEach((spark, index) => {
+            setTimeout(() => {
+                spark.style.animation = 'sparkle 0.3s ease-out';
+            }, index * 50);
+        });
+    }
+}
+
+/**
+ * 更新加载文本
+ */
+function updateLoadingText(text) {
+    const currentLang = localStorage.getItem('language') || 'zh-CN';
+    const translations = {
+        'Loading resources...': {
+            'zh-CN': '加载中...',
+            'en': 'Loading...',
+            'zh-TW': '載入中...'
+        },
+        'Initializing...': {
+            'zh-CN': '初始化...',
+            'en': 'Initializing...',
+            'zh-TW': '初始化中...'
+        },
+        'Ready...': {
+            'zh-CN': '准备完成...',
+            'en': 'Ready...',
+            'zh-TW': '準備完成...'
+        },
+        'Complete!': {
+            'zh-CN': '完成！',
+            'en': 'Complete!',
+            'zh-TW': '完成！'
+        }
+    };
+    
+    // 更新副标题
+    const subtitle = document.querySelector('.glitch-main');
+    if (subtitle && translations[text]) {
+        const translatedText = translations[text][currentLang] || text;
+        subtitle.textContent = translatedText;
+        // 同时更新glitch复制文本
+        document.querySelectorAll('.glitch-copy').forEach(copy => {
+            copy.textContent = translatedText;
+        });
+    }
+    
+    // 更新状态文本
+    const statusElement = document.querySelector('.loading-status');
+    if (statusElement) {
+        statusElement.textContent = translations[text][currentLang] || text;
+    }
+}
+
+/**
+ * 更新加载界面语言
+ */
+function updateLoadingLanguage() {
+    const currentLang = localStorage.getItem('language') || 'zh-CN';
+    
+    // 更新主标题
+    const typingText = document.querySelector('.typing-text');
+    if (typingText) {
+        const text = typingText.getAttribute(`data-${currentLang.replace('-', '').toLowerCase()}`);
+        if (text) {
+            typingText.textContent = text;
+        }
+    }
+    
+    // 更新副标题
+    const subtitle = document.querySelector('.loader-subtitle span');
+    if (subtitle) {
+        const text = subtitle.getAttribute(`data-${currentLang.replace('-', '').toLowerCase()}`);
+        if (text) {
+            subtitle.textContent = text;
+        }
+    }
+}
+
+/**
+ * 启动打字机效果
+ */
+function startTypingEffect() {
+    const typingText = document.querySelector('.typing-text');
+    const cursor = document.querySelector('.typing-cursor');
+    
+    if (!typingText) return;
+    
+    const currentLang = localStorage.getItem('language') || 'zh-CN';
+    const langKey = currentLang.replace('-', '').toLowerCase();
+    const targetText = typingText.getAttribute(`data-${langKey}`) || typingText.textContent;
+    
+    let currentText = '';
+    let charIndex = 0;
+    
+    function typeCharacter() {
+        if (charIndex < targetText.length) {
+            currentText += targetText.charAt(charIndex);
+            typingText.textContent = currentText;
+            charIndex++;
+            setTimeout(typeCharacter, 150);
+        }
+    }
+    
+    // 清空文本并开始打字
+    typingText.textContent = '';
+    setTimeout(typeCharacter, 500);
 }
 
 /**

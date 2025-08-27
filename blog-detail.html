@@ -410,18 +410,18 @@
 
     <!-- 博客详情头部 -->
     <div class="blog-detail-hero">
-        <h1 id="blog-title">加载中...</h1>
+        <h1 id="blog-title" data-i18n="loading">加载中...</h1>
         <div class="blog-meta">
             <span>📝 <span id="blog-author">梁来养</span></span>
             <span>📅 <span id="blog-date">2024-01-15</span></span>
-            <span>⏱️ <span id="blog-readtime">15</span> 分钟阅读</span>
+            <span>⏱️ <span id="blog-readtime">15</span> <span id="readtime-text" data-i18n="blog.minRead">分钟阅读</span></span>
             <span>🏷️ <span id="blog-category">人生感悟</span></span>
         </div>
     </div>
 
     <!-- 博客内容 -->
     <div class="blog-container">
-        <a href="index.html#blog" class="back-to-list">← 返回博客列表</a>
+        <a href="index.html#blog" class="back-to-list" id="back-to-list">← 返回博客列表</a>
         
         <div class="blog-tags" id="blog-tags">
             <!-- 标签将通过JS动态添加 -->
@@ -433,8 +433,8 @@
         </article>
         
         <div class="blog-nav">
-            <a href="#" class="prev-post" id="prev-post">← 上一篇</a>
-            <a href="#" class="next-post" id="next-post">下一篇 →</a>
+            <a href="#" class="prev-post" id="prev-post">← <span id="prev-text">上一篇</span></a>
+            <a href="#" class="next-post" id="next-post"><span id="next-text">下一篇</span> →</a>
         </div>
     </div>
 
@@ -497,12 +497,18 @@
             const post = posts.find(p => p.id === postId);
             
             if (!post) {
-                document.getElementById('blog-content').innerHTML = '<p>文章不存在或已被删除。</p>';
+                const notFoundMsg = lang === 'en' ? '<p>Article not found or has been deleted.</p>' : 
+                                   lang === 'zh-TW' ? '<p>文章不存在或已被刪除。</p>' : 
+                                   '<p>文章不存在或已被删除。</p>';
+                document.getElementById('blog-content').innerHTML = notFoundMsg;
                 return;
             }
             
             // 更新页面内容
-            document.title = post.title + ' - 梁来养的个人网站';
+            const siteTitle = lang === 'en' ? 'Liang Laiyang\'s Personal Website' : 
+                             lang === 'zh-TW' ? '梁來養的個人網站' : 
+                             '梁来养的个人网站';
+            document.title = post.title + ' - ' + siteTitle;
             document.getElementById('blog-title').textContent = post.title;
             document.getElementById('blog-author').textContent = post.author;
             document.getElementById('blog-date').textContent = post.date;
@@ -540,8 +546,46 @@
                 nextLink.style.display = 'none';
             }
             
+            // 更新UI文本
+            updateBlogDetailUI(lang);
+            
             // 高亮代码
             highlightCode();
+        }
+
+        // 更新博客详情页UI文本
+        function updateBlogDetailUI(lang) {
+            const translations = {
+                'zh-CN': {
+                    backToList: '← 返回博客列表',
+                    minRead: '分钟阅读',
+                    loadingContent: '正在加载文章内容...'
+                },
+                'en': {
+                    backToList: '← Back to Blog List',
+                    minRead: 'min read',
+                    loadingContent: 'Loading article content...'
+                },
+                'zh-TW': {
+                    backToList: '← 返回部落格列表',
+                    minRead: '分鐘閱讀',
+                    loadingContent: '正在載入文章內容...'
+                }
+            };
+            
+            const t = translations[lang] || translations['zh-CN'];
+            
+            // 更新"返回博客列表"链接
+            const backToListLink = document.getElementById('back-to-list');
+            if (backToListLink) {
+                backToListLink.textContent = t.backToList;
+            }
+            
+            // 更新"分钟阅读"文本
+            const readTimeText = document.getElementById('readtime-text');
+            if (readTimeText) {
+                readTimeText.textContent = t.minRead;
+            }
         }
 
         // 代码高亮（简单实现）

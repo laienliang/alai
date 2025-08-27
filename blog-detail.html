@@ -492,8 +492,24 @@
                 return;
             }
             
-            // 获取对应语言的博客列表
-            const posts = blogPosts[lang] || blogPosts['zh-CN'];
+            // 获取对应语言的博客列表，并记录是否需要回退
+            let actualLang = lang;
+            let posts = blogPosts[lang];
+            
+            // 如果当前语言的博文不存在，按优先级回退
+            if (!posts) {
+                if (lang === 'zh-TW') {
+                    posts = blogPosts['zh-CN'] || blogPosts['en'];
+                    actualLang = posts === blogPosts['zh-CN'] ? 'zh-CN' : 'en';
+                } else if (lang === 'en') {
+                    posts = blogPosts['zh-CN'];
+                    actualLang = 'zh-CN';
+                } else {
+                    posts = blogPosts['zh-CN'];
+                    actualLang = 'zh-CN';
+                }
+            }
+            
             const post = posts.find(p => p.id === postId);
             
             if (!post) {
@@ -502,6 +518,34 @@
                                    '<p>文章不存在或已被删除。</p>';
                 document.getElementById('blog-content').innerHTML = notFoundMsg;
                 return;
+            }
+            
+            // 如果使用了回退语言，显示提示信息
+            if (actualLang !== lang) {
+                const languageNames = {
+                    'zh-CN': '简体中文',
+                    'zh-TW': '繁體中文',
+                    'en': 'English'
+                };
+                
+                const fallbackMessages = {
+                    'zh-CN': `<div class="language-fallback-notice" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                        <i>⚠️ ${languageNames[lang]}版本暂不可用，正在显示${languageNames[actualLang]}版本</i>
+                    </div>`,
+                    'zh-TW': `<div class="language-fallback-notice" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                        <i>⚠️ ${languageNames[lang]}版本暫不可用，正在顯示${languageNames[actualLang]}版本</i>
+                    </div>`,
+                    'en': `<div class="language-fallback-notice" style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                        <i>⚠️ ${languageNames[lang]} version is not available, showing ${languageNames[actualLang]} version</i>
+                    </div>`
+                };
+                
+                // 在内容前插入回退提示
+                setTimeout(() => {
+                    const contentEl = document.getElementById('blog-content');
+                    const fallbackNotice = fallbackMessages[lang] || fallbackMessages['zh-CN'];
+                    contentEl.innerHTML = fallbackNotice + contentEl.innerHTML;
+                }, 100);
             }
             
             // 更新页面内容

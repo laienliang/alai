@@ -81,6 +81,8 @@ function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
@@ -90,16 +92,28 @@ function initNavigation() {
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+                
+                // 更新激活状态
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
             }
             
             // 关闭移动端菜单
-            elements.navMenu.classList.remove('active');
-            elements.navToggle.classList.remove('active');
-            
-            // 更新激活状态
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+            if (elements.navMenu && elements.navToggle) {
+                elements.navMenu.classList.remove('active');
+                elements.navToggle.classList.remove('active');
+            }
         });
+    });
+    
+    // 点击菜单外部关闭菜单
+    document.addEventListener('click', (e) => {
+        if (elements.navMenu && elements.navToggle && elements.navMenu.classList.contains('active')) {
+            if (!e.target.closest('.nav-menu') && !e.target.closest('.nav-toggle')) {
+                elements.navMenu.classList.remove('active');
+                elements.navToggle.classList.remove('active');
+            }
+        }
     });
 }
 

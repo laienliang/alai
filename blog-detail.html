@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客详情 - 梁来养的个人网站</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/enhanced.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        /* 确保导航栏在最上层 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* 博客详情页样式 */
+        .blog-detail-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 140px 0 60px; /* 增加顶部间距，避免被导航栏遮挡 */
+            text-align: center;
+            margin-top: 70px; /* 为固定导航栏留出空间 */
+            pointer-events: none; /* 确保不会阻挡导航栏 */
+        }
+        
+        .blog-detail-hero * {
+            pointer-events: auto; /* 恢复子元素的点击 */
+        }
+        
+        .blog-detail-hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-container {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 确保菜单链接可点击 */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-item {
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            pointer-events: auto !important;
+            z-index: 9999 !important;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .nav-link.active {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .blog-content {
+            padding: 60px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5em;
+            margin: 30px 0 15px;
+            color: #34495e;
+        }
+        
+        .blog-content h4 {
+            font-size: 1.2em;
+            margin: 25px 0 10px;
+            color: #495057;
+        }
+        
+        .blog-content p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        .blog-content li {
+            margin: 10px 0;
+        }
+        
+        .blog-content blockquote {
+            margin: 30px 0;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .blog-content blockquote p {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+        
+        .blog-content pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .blog-content code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .highlight-box, .example-box, .solution-box, .method-box, 
+        .case-study, .project-example, .vision-box, .principle-box,
+        .service-split, .cache-details, .async-strategy {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .highlight-box h4, .example-box h4, .solution-box h4 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .project-highlight {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .author-signature {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+            text-align: right;
+            color: #6c757d;
+        }
+        
+        .ending-quote {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: none;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .ending-quote p {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+            padding: 0 60px;
+        }
+        
+        .blog-tags span {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .back-to-list {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #667eea;
+            text-decoration: none;
+            margin: 20px 60px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-list:hover {
+            transform: translateX(-5px);
+        }
+        
+        .blog-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 60px;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .blog-nav a {
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-nav a:hover {
+            transform: translateX(5px);
+        }
+        
+        .blog-nav .prev-post:hover {
+            transform: translateX(-5px);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        table td {
+            border: 1px solid #e9ecef;
+            padding: 10px;
+        }
+        
+        table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .blog-content {
+                padding: 30px 20px;
+            }
+            
+            .blog-detail-hero h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <!-- Logo removed as requested -->
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#journey" class="nav-link">我的故事</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">关于我</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">技能</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#portfolio" class="nav-link">作品集</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#blog" class="nav-link active">博客</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">联系</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <select id="lang-select" class="lang-select">
+                    <option value="zh-CN">简体中文</option>
+                    <option value="en">English</option>
+                    <option value="zh-TW">繁體中文</option>
+                </select>
+                <button class="menu-toggle" id="menu-toggle" aria-label="菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 博客详情头部 -->
+    <div class="blog-detail-hero">
+        <h1 id="blog-title">加载中...</h1>
+        <div class="blog-meta">
+            <span>📝 <span id="blog-author">梁来养</span></span>
+            <span>📅 <span id="blog-date">2024-01-15</span></span>
+            <span>⏱️ <span id="blog-readtime">15</span> 分钟阅读</span>
+            <span>🏷️ <span id="blog-category">人生感悟</span></span>
+        </div>
+    </div>
+
+    <!-- 博客内容 -->
+    <div class="blog-container">
+        <a href="index.html#blog" class="back-to-list">← 返回博客列表</a>
+        
+        <div class="blog-tags" id="blog-tags">
+            <!-- 标签将通过JS动态添加 -->
+        </div>
+        
+        <article id="blog-content" class="blog-content">
+            <!-- 博客内容将通过JS动态加载 -->
+            <p>正在加载文章内容...</p>
+        </article>
+        
+        <div class="blog-nav">
+            <a href="#" class="prev-post" id="prev-post">← 上一篇</a>
+            <a href="#" class="next-post" id="next-post">下一篇 →</a>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>梁来养</h3>
+                    <p>从放牛娃到技术总监<br>用代码改变命运，用知识创造未来</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="index.html#about">关于我</a></li>
+                        <li><a href="index.html#portfolio">作品集</a></li>
+                        <li><a href="index.html#blog">博客</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系方式</h4>
+                    <p>邮箱：lianglaiyang@gmail.com</p>
+                    <p>微信扫码添加：</p>
+                    <img src="image/qr.jpg" alt="微信二维码" class="footer-qr" style="width: 100px; height: 100px;">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 梁来养. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 加载必要的脚本 -->
+    <script src="js/blog-posts.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/i18n-complete.js"></script>
+    <script>
+        // 获取URL参数
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // 加载博客内容
+        function loadBlogPost() {
+            const postId = getUrlParameter('id');
+            const lang = localStorage.getItem('language') || 'zh-CN';
+            
+            if (!postId) {
+                window.location.href = 'index.html#blog';
+                return;
+            }
+            
+            // 获取对应语言的博客列表
+            const posts = blogPosts[lang] || blogPosts['zh-CN'];
+            const post = posts.find(p => p.id === postId);
+            
+            if (!post) {
+                document.getElementById('blog-content').innerHTML = '<p>文章不存在或已被删除。</p>';
+                return;
+            }
+            
+            // 更新页面内容
+            document.title = post.title + ' - 梁来养的个人网站';
+            document.getElementById('blog-title').textContent = post.title;
+            document.getElementById('blog-author').textContent = post.author;
+            document.getElementById('blog-date').textContent = post.date;
+            document.getElementById('blog-readtime').textContent = post.readTime;
+            document.getElementById('blog-category').textContent = post.category;
+            
+            // 添加标签
+            const tagsContainer = document.getElementById('blog-tags');
+            tagsContainer.innerHTML = post.tags.map(tag => `<span>${tag}</span>`).join('');
+            
+            // 加载文章内容
+            document.getElementById('blog-content').innerHTML = post.content;
+            
+            // 设置上一篇和下一篇
+            const currentIndex = posts.findIndex(p => p.id === postId);
+            const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+            const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+            
+            const prevLink = document.getElementById('prev-post');
+            const nextLink = document.getElementById('next-post');
+            
+            if (prevPost) {
+                prevLink.href = `blog-detail.html?id=${prevPost.id}`;
+                prevLink.innerHTML = `← ${prevPost.title}`;
+                prevLink.style.display = 'flex';
+            } else {
+                prevLink.style.display = 'none';
+            }
+            
+            if (nextPost) {
+                nextLink.href = `blog-detail.html?id=${nextPost.id}`;
+                nextLink.innerHTML = `${nextPost.title} →`;
+                nextLink.style.display = 'flex';
+            } else {
+                nextLink.style.display = 'none';
+            }
+            
+            // 高亮代码
+            highlightCode();
+        }
+
+        // 代码高亮（简单实现）
+        function highlightCode() {
+            const codeBlocks = document.querySelectorAll('pre code');
+            codeBlocks.forEach(block => {
+                // 这里可以集成更专业的代码高亮库如 Prism.js 或 Highlight.js
+                block.style.fontFamily = "'Courier New', monospace";
+            });
+        }
+
+        // 页面加载完成后加载博客内容
+        document.addEventListener('DOMContentLoaded', loadBlogPost);
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        // 页面滚动时导航栏效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

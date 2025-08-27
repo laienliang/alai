@@ -1045,6 +1045,21 @@ section {
   gap: var(--space-xl);
 }
 
+/* Featured blog card styling */
+.blog-card-featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .blog-card-featured {
+    grid-column: span 2;
+  }
+}
+
 .blog-card {
   background: var(--bg-primary);
   border-radius: 12px;

@@ -80,29 +80,35 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+            const href = link.getAttribute('href');
             
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - CONFIG.scrollOffset;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+            // 判断是否是页面内锚点链接（以#开头）
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                e.stopPropagation();
                 
-                // 更新激活状态
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
+                const targetSection = document.querySelector(href);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - CONFIG.scrollOffset;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 更新激活状态
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+                
+                // 关闭移动端菜单
+                if (elements.navMenu && elements.navToggle) {
+                    elements.navMenu.classList.remove('active');
+                    elements.navToggle.classList.remove('active');
+                }
             }
-            
-            // 关闭移动端菜单
-            if (elements.navMenu && elements.navToggle) {
-                elements.navMenu.classList.remove('active');
-                elements.navToggle.classList.remove('active');
-            }
+            // 如果是外部链接（包含index.html等），让它正常跳转
+            // 不需要preventDefault()
         });
     });
     

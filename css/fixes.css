@@ -2,6 +2,286 @@
    修复显示问题的样式
    ========================================== */
 
+/* 强制修复手机端博客网格布局 - 确保单列显示 */
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
+  }
+  
+  .blog-card {
+    padding: var(--space-md) !important;
+    margin-bottom: var(--space-sm) !important;
+  }
+  
+  .blog-card-featured {
+    grid-column: 1 / -1 !important;
+    padding: var(--space-lg) var(--space-md) !important;
+  }
+  
+  .blog-categories {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: var(--space-xs) !important;
+    margin-bottom: var(--space-md) !important;
+  }
+  
+  .blog-categories .btn {
+    font-size: var(--text-sm) !important;
+    padding: var(--space-xs) var(--space-sm) !important;
+    white-space: nowrap !important;
+  }
+  
+  .blog-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: var(--space-xs) !important;
+    margin-bottom: var(--space-sm) !important;
+  }
+  
+  /* 联系板块手机端紧凑优化 */
+  .contact {
+    padding: var(--space-lg) 0 !important;
+  }
+  
+  .contact .section-title {
+    font-size: var(--text-2xl) !important;
+    margin-bottom: var(--space-sm) !important;
+  }
+  
+  .contact .section-subtitle {
+    font-size: var(--text-sm) !important;
+    margin-bottom: var(--space-md) !important;
+    color: var(--text-secondary) !important;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
+  }
+  
+  .contact-form {
+    gap: var(--space-sm) !important;
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-sm) !important;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px !important;
+    font-size: var(--text-sm) !important;
+    border-radius: 6px !important;
+  }
+  
+  .form-group label {
+    font-size: var(--text-xs) !important;
+  }
+  
+  .form-group textarea {
+    min-height: 80px !important;
+    resize: vertical;
+  }
+  
+  /* 联系信息紧凑设计 - 与其他卡片样式保持一致 */
+  .contact-info {
+    gap: var(--space-xs) !important;
+    background: var(--bg-primary) !important;
+    padding: var(--space-md) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+  
+  .contact-info > .info-item:first-child {
+    display: none !important; /* 隐藏"联系方式"标题 */
+  }
+  
+  .info-item {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    padding: var(--space-xs) 0 !important;
+    background: none !important;
+    border: none !important;
+    border-bottom: 1px solid #eee !important;
+  }
+  
+  .info-item:last-child {
+    border-bottom: none !important;
+  }
+  
+  /* 隐藏所有图标 */
+  .info-icon {
+    display: none !important;
+  }
+  
+  .info-item h4 {
+    font-size: var(--text-sm) !important;
+    font-weight: 600 !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+    width: 60px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .info-item p {
+    font-size: var(--text-sm) !important;
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .qr-code {
+    width: 80px !important;
+    height: 80px !important;
+    margin-top: var(--space-xs) !important;
+    border-radius: 4px !important;
+  }
+  
+  .contact-form .btn {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: var(--text-sm) !important;
+    margin-top: var(--space-md) !important;
+    border-radius: 6px !important;
+  }
+  
+  /* 修复底部二维码居中问题 */
+  .footer-content {
+    text-align: center !important;
+  }
+  
+  .footer-section {
+    text-align: center !important;
+  }
+  
+  .footer-qr {
+    display: block !important;
+    margin: var(--space-sm) auto !important;
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-sm) !important;
+  }
+  
+  .blog-card {
+    padding: var(--space-sm) !important;
+    border-radius: 8px !important;
+  }
+  
+  .blog-card-featured {
+    padding: var(--space-md) var(--space-sm) !important;
+  }
+  
+  .blog-title {
+    font-size: var(--text-base) !important;
+    line-height: 1.3 !important;
+  }
+  
+  .blog-card-featured .blog-title {
+    font-size: var(--text-lg) !important;
+  }
+  
+  /* 小屏手机联系板块超紧凑优化 */
+  .contact {
+    padding: var(--space-md) 0 !important;
+  }
+  
+  .contact .section-title {
+    font-size: var(--text-xl) !important;
+    margin-bottom: var(--space-xs) !important;
+  }
+  
+  .contact .section-subtitle {
+    font-size: var(--text-xs) !important;
+    margin-bottom: var(--space-sm) !important;
+  }
+  
+  .contact-content {
+    gap: var(--space-sm) !important;
+  }
+  
+  .contact-form {
+    gap: 8px !important;
+  }
+  
+  .form-group {
+    margin-bottom: 8px !important;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 10px !important;
+    font-size: var(--text-xs) !important;
+    border-radius: 4px !important;
+  }
+  
+  .form-group label {
+    font-size: 10px !important;
+  }
+  
+  .form-group textarea {
+    min-height: 60px !important;
+  }
+  
+  /* 联系信息极简设计 */
+  .contact-info {
+    padding: var(--space-sm) !important;
+    gap: 4px !important;
+    background: var(--bg-primary) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+  
+  .info-item {
+    padding: 6px 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+  }
+  
+  .info-item h4 {
+    font-size: var(--text-xs) !important;
+    width: 50px !important;
+  }
+  
+  .info-item p {
+    font-size: var(--text-xs) !important;
+  }
+  
+  .qr-code {
+    width: 60px !important;
+    height: 60px !important;
+    margin-top: 4px !important;
+  }
+  
+  .contact-form .btn {
+    padding: 10px !important;
+    font-size: var(--text-xs) !important;
+    margin-top: var(--space-sm) !important;
+  }
+  
+  /* 修复底部二维码居中问题 */
+  .footer-content {
+    text-align: center !important;
+  }
+  
+  .footer-section {
+    text-align: center !important;
+  }
+  
+  .footer-qr {
+    display: block !important;
+    margin: var(--space-xs) auto !important;
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
 /* 修复头像被导航栏遮挡 */
 .hero {
   padding-top: calc(var(--navbar-height) + 30px) !important;
@@ -300,60 +580,80 @@ button, a, input, textarea, select {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .hero {
+    text-align: center !important;
+  }
+  
+  .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
   .hero-stats {
-    gap: 2rem !important;
+    gap: 1.5rem !important;
     padding: 1.5rem 0.5rem;
-    margin: 2rem 0 !important;
+    margin: 2rem auto !important;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    width: fit-content !important;
   }
   
   .stat-item {
     min-width: 100px;
-    padding: 0.8rem 0.5rem;
-    flex: 1;
+    max-width: 120px;
+    padding: 0.8rem 0.4rem;
+    flex: 0 0 auto;
+    text-align: center !important;
   }
   
   .stat-number {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
   }
   
   .stat-label {
-    font-size: 0.875rem !important;
-    line-height: 1.3;
+    font-size: 0.8rem !important;
+    line-height: 1.2;
   }
 }
 
 @media (max-width: 480px) {
   .hero-stats {
     gap: 1rem !important;
-    padding: 1rem 0.25rem;
+    padding: 1rem;
+    margin: 1.5rem auto !important;
     flex-direction: column;
-    align-items: center;
+    align-items: center !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: 90% !important;
   }
   
   .stat-item {
-    min-width: 200px;
-    max-width: 250px;
-    padding: 1rem;
+    width: 220px !important;
+    padding: 0.8rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    text-align: left !important;
+    justify-content: center !important;
+    text-align: center !important;
     gap: 1rem;
+    margin: 0 auto !important;
   }
   
   .stat-number {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
     margin-bottom: 0 !important;
     flex-shrink: 0;
   }
   
   .stat-label {
-    font-size: 1rem !important;
-    white-space: normal;
+    font-size: 0.9rem !important;
+    white-space: nowrap;
     flex: 1;
+    text-align: left !important;
   }
 }

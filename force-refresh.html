@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>强制刷新</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+            background: #f0f2f5; 
+        }
+        .refresh-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover { background: #2980b9; }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="refresh-box">
+        <h1>🔄 CSS修复完成</h1>
+        <p>我已经修复了手机端博客布局问题。由于CSS缓存，你需要强制刷新页面来看到效果。</p>
+        
+        <div class="warning">
+            <strong>⚠️ 重要：</strong><br>
+            请使用以下方式强制刷新以清除CSS缓存：
+            <ul style="text-align: left; margin: 10px 0;">
+                <li><strong>Windows/Linux:</strong> Ctrl + F5 或 Ctrl + Shift + R</li>
+                <li><strong>Mac:</strong> Cmd + Shift + R</li>
+                <li><strong>手机:</strong> 长按刷新按钮选择"硬刷新"</li>
+            </ul>
+        </div>
+
+        <a href="/" class="btn">📱 返回主页测试</a>
+        <a href="/test-responsive-blog.html" class="btn">🧪 响应式测试页</a>
+        
+        <hr style="margin: 30px 0; border: 1px solid #eee;">
+        
+        <h3>修复内容：</h3>
+        <ul style="text-align: left; color: #666;">
+            <li>✅ 强制手机端使用单列布局</li>
+            <li>✅ 优化间距和内边距</li>
+            <li>✅ 调整分类按钮换行</li>
+            <li>✅ 优化博客卡片标题布局</li>
+            <li>✅ 使用 !important 确保样式优先级</li>
+        </ul>
+
+        <p style="color: #999; font-size: 14px; margin-top: 30px;">
+            修复文件：css/fixes.css (最后加载，确保覆盖其他样式)
+        </p>
+    </div>
+
+    <script>
+        // 添加时间戳到链接，确保不使用缓存
+        document.querySelectorAll('a[href^="/"]').forEach(link => {
+            const url = new URL(link.href);
+            url.searchParams.set('t', Date.now());
+            link.href = url.href;
+        });
+    </script>
+</body>
+</html>

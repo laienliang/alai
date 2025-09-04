@@ -172,6 +172,32 @@
   background-clip: text;
 }
 
+/* 暗色主题下的真实姓名样式 */
+[data-theme="dark"] .hero-title .real-name {
+  font-size: 0.35em !important;
+  opacity: 0.9 !important;
+  display: inline !important;
+  margin-left: 0.5em !important;
+  font-weight: normal !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #a8b3c7 !important;
+  color: #a8b3c7 !important;
+  vertical-align: baseline !important;
+  animation: none !important;
+}
+
+[data-theme="dark"] .hero-title .real-name::before {
+  content: "(" !important;
+  color: #a8b3c7 !important;
+}
+
+[data-theme="dark"] .hero-title .real-name::after {
+  content: ")" !important;
+  color: #a8b3c7 !important;
+}
+
 [data-theme="dark"] .stat-number {
   color: var(--accent-color);
 }

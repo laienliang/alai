@@ -28,6 +28,33 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradient-shift 4s ease infinite;
+  text-align: center;
+}
+
+/* 真实姓名的小字样式 - enhanced版本 */
+.hero-title .real-name {
+  font-size: 0.35em !important;
+  opacity: 0.9 !important;
+  display: inline !important;
+  margin-left: 0.5em !important;
+  font-weight: normal !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #8e9aaf !important;
+  color: #8e9aaf !important;
+  vertical-align: baseline !important;
+  animation: none !important;
+}
+
+.hero-title .real-name::before {
+  content: "(" !important;
+  color: #8e9aaf !important;
+}
+
+.hero-title .real-name::after {
+  content: ")" !important;
+  color: #8e9aaf !important;
 }
 
 @keyframes gradient-shift {

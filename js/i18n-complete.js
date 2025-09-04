@@ -42,7 +42,7 @@ class I18nManager {
                 },
                 // Hero部分
                 hero: {
-                    name: '梁来养',
+                    name: '阿来',
                     prefix: '我是',
                     tagline: '从大山深处的放牛娃，到引领AI时代的技术总监',
                     roles: ['工程师', '架构师', '技术总监', '团队领导者', '创业者', 'AI探索者'],
@@ -73,8 +73,8 @@ class I18nManager {
                     title: '关于我',
                     subtitle: '一个用代码改变命运的人',
                     subheading: '一个用代码改变命运的人',
-                    description: '我是梁来养，一个从广东山区走出来的技术人。20多年的技术生涯，让我从一个赤脚放牛的山村少年，成长为今天的技术总监。我相信技术的力量，更相信坚持的价值。',
-                    intro: '我是梁来养，一个从广东大山深处走出来的技术人。从赤脚放牛的少年，到如今的技术总监，这一路走来，靠的是对知识的渴望和永不放弃的精神。',
+                    description: '我是阿来（梁来养），一个从广东山区走出来的技术人。20多年的技术生涯，让我从一个赤脚放牛的山村少年，成长为今天的技术总监。我相信技术的力量，更相信坚持的价值。',
+                    intro: '我是阿来（梁来养），一个从广东大山深处走出来的技术人。从赤脚放牛的少年，到如今的技术总监，这一路走来，靠的是对知识的渴望和永不放弃的精神。',
                     university: '在广东工业大学，我通过助学贷款和勤工俭学完成学业，获得国家励志奖学金和数学建模竞赛二等奖。毕业后，我与名校精英竞争，成功进入广东电信，后来在唯品会深耕技术，支撑起30万QPS的高并发系统。',
                     current: '现在，作为广州为伊科技的技术总监，我主导研发了AI创赢系统，致力于让AI成为企业的超级员工。同时，我也是一名大学老师，希望把知识和经验传递给更多人。',
                     timelineDates: {
@@ -101,7 +101,7 @@ class I18nManager {
                     ],
                     details: {
                         name: '姓名：',
-                        nameValue: '梁来养',
+                        nameValue: '阿来 (梁来养)',
                         age: '年龄：',
                         ageValue: '80后',
                         education: '学历：',
@@ -281,7 +281,7 @@ class I18nManager {
                     quickLinks: '快速链接',
                     contact: '联系方式',
                     wechatScan: '微信扫码添加：',
-                    copyright: '© 2024 梁来养. All rights reserved.'
+                    copyright: '© 2024 阿来. All rights reserved.'
                 }
             },
             'en': {
@@ -297,7 +297,7 @@ class I18nManager {
                 },
                 // Hero Section
                 hero: {
-                    name: 'Liang Laiyang',
+                    name: 'Alai',
                     prefix: 'I am',
                     tagline: 'From a cowboy in the mountains to a tech leader in the AI era',
                     roles: ['Engineer', 'Architect', 'Tech Director', 'Team Leader', 'Entrepreneur', 'AI Explorer'],
@@ -328,8 +328,8 @@ class I18nManager {
                     title: 'About Me',
                     subtitle: 'A person who changed destiny with code',
                     subheading: 'A person who changed destiny with code',
-                    description: "I'm Liang Laiyang, a tech professional from Guangdong's mountainous region. Over 20 years in tech has transformed me from a barefoot cowboy to today's tech director. I believe in the power of technology and the value of persistence.",
-                    intro: "I'm Liang Laiyang, a tech professional from deep in the Guangdong mountains. From a barefoot cowboy to today's tech director, this journey has been driven by a thirst for knowledge and a never-give-up spirit.",
+                    description: "I'm Alai (Liang Laiyang), a tech professional from Guangdong's mountainous region. Over 20 years in tech has transformed me from a barefoot cowboy to today's tech director. I believe in the power of technology and the value of persistence.",
+                    intro: "I'm Alai (Liang Laiyang), a tech professional from deep in the Guangdong mountains. From a barefoot cowboy to today's tech director, this journey has been driven by a thirst for knowledge and a never-give-up spirit.",
                     university: "At Guangdong University of Technology, I completed my studies through student loans and work-study programs, earning the National Inspirational Scholarship and second prize in the Mathematical Modeling Competition. After graduation, competing with elite graduates, I successfully joined Guangdong Telecom, later deepening my technical expertise at VIPShop, supporting 300K QPS high-concurrency systems.",
                     current: "Now, as Tech Director at Guangzhou Weiyi Technology, I lead the development of the AI Chuangying system, dedicated to making AI the super employee for enterprises. I'm also a university lecturer, hoping to pass on knowledge and experience to more people.",
                     timelineDates: {
@@ -356,7 +356,7 @@ class I18nManager {
                     ],
                     details: {
                         name: 'Name:',
-                        nameValue: 'Liang Laiyang',
+                        nameValue: 'Alai (Liang Laiyang)',
                         age: 'Age:',
                         ageValue: 'Post-80s',
                         education: 'Education:',
@@ -536,7 +536,7 @@ class I18nManager {
                     quickLinks: 'Quick Links',
                     contact: 'Contact',
                     wechatScan: 'Scan WeChat:',
-                    copyright: '© 2024 Liang Laiyang. All rights reserved.'
+                    copyright: '© 2024 Alai. All rights reserved.'
                 }
             },
             'zh-TW': {
@@ -552,7 +552,7 @@ class I18nManager {
                 },
                 // Hero部分
                 hero: {
-                    name: '梁來養',
+                    name: '阿來',
                     prefix: '我是',
                     tagline: '從大山深處的放牛娃，到引領AI時代的技術總監',
                     roles: ['工程師', '架構師', '技術總監', '團隊領導者', '創業者', 'AI探索者'],
@@ -583,8 +583,8 @@ class I18nManager {
                     title: '關於我',
                     subtitle: '一個用代碼改變命運的人',
                     subheading: '一個用代碼改變命運的人',
-                    description: '我是梁來養，一個從廣東山區走出來的技術人。20多年的技術生涯，讓我從一個赤腳放牛的山村少年，成長為今天的技術總監。我相信技術的力量，更相信堅持的價值。',
-                    intro: '我是梁來養，一個從廣東大山深處走出來的技術人。從赤腳放牛的少年，到如今的技術總監，這一路走來，靠的是對知識的渴望和永不放棄的精神。',
+                    description: '我是阿來（梁來養），一個從廣東山區走出來的技術人。20多年的技術生涯，讓我從一個赤腳放牛的山村少年，成長為今天的技術總監。我相信技術的力量，更相信堅持的價值。',
+                    intro: '我是阿來（梁來養），一個從廣東大山深處走出來的技術人。從赤腳放牛的少年，到如今的技術總監，這一路走來，靠的是對知識的渴望和永不放棄的精神。',
                     university: '在廣東工業大學，我通過助學貸款和勤工儉學完成學業，獲得國家勵志獎學金和數學建模競賽二等獎。畢業後，我與名校精英競爭，成功進入廣東電信，後來在唯品會深耕技術，支撐起30萬QPS的高並發系統。',
                     current: '現在，作為廣州為伊科技的技術總監，我主導研發了AI創贏系統，致力於讓AI成為企業的超級員工。同時，我也是一名大學老師，希望把知識和經驗傳遞給更多人。',
                     timelineDates: {
@@ -611,7 +611,7 @@ class I18nManager {
                     ],
                     details: {
                         name: '姓名：',
-                        nameValue: '梁來養',
+                        nameValue: '阿來 (梁來養)',
                         age: '年齡：',
                         ageValue: '80後',
                         education: '學歷：',
@@ -791,7 +791,7 @@ class I18nManager {
                     quickLinks: '快速連結',
                     contact: '聯繫方式',
                     wechatScan: '微信掃碼添加：',
-                    copyright: '© 2024 梁來養. 版權所有。'
+                    copyright: '© 2024 阿來. 版權所有。'
                 }
             }
         };
@@ -864,9 +864,20 @@ class I18nManager {
             }
         });
         
-        // Hero section
+        // Hero section - 保持原有的HTML结构
         const heroTitle = document.querySelector('.hero-title');
-        if (heroTitle) heroTitle.textContent = t.hero.name;
+        if (heroTitle) {
+            // 根据语言显示相应的真实姓名
+            let realName;
+            if (this.currentLang === 'en') {
+                realName = 'Liang Laiyang';
+            } else if (this.currentLang === 'zh-TW') {
+                realName = '梁來養';
+            } else {
+                realName = '梁来养';
+            }
+            heroTitle.innerHTML = `${t.hero.name} <span class="real-name">${realName}</span>`;
+        }
         
         // Typing prefix
         const typingPrefix = document.querySelector('.typing-prefix');

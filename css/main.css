@@ -1,5 +1,5 @@
 /* ==========================================
-   梁来养个人网站 - 主样式文件
+   阿来个人网站 - 主样式文件
    从放牛娃到技术总监的视觉呈现
    ========================================== */
 
@@ -432,6 +432,41 @@ for a more impressive loading experience with:
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: center;
+}
+
+/* 真实姓名的小字样式 */
+.hero-title .real-name {
+  font-size: 0.4em !important;
+  opacity: 0.8 !important;
+  display: inline !important;
+  margin-left: 0.5em !important;
+  font-weight: normal !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #7f8c8d !important;
+  color: #7f8c8d !important;
+  vertical-align: baseline !important;
+}
+
+.hero-title .real-name::before {
+  content: "(" !important;
+  color: #7f8c8d !important;
+}
+
+.hero-title .real-name::after {
+  content: ")" !important;
+  color: #7f8c8d !important;
+}
+
+/* 小尺寸的真实姓名 - 用于其他地方 */
+.real-name-small {
+  font-size: 0.7em;
+  opacity: 0.7;
+  margin-left: 0.3em;
+  font-weight: normal;
+  color: var(--text-secondary);
 }
 
 .typing-container {
@@ -1024,8 +1059,16 @@ for a more impressive loading experience with:
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-xl);
+}
+
+/* 在小屏幕上使用单列布局 */
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
 }
 
 /* Featured blog card styling */

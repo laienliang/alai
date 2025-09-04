@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系板块响应式测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/contact-compact.css">
+    <link rel="stylesheet" href="css/fixes.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 0;
+            background: #f8f9fa;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .breakpoint-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .optimization-info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-info" id="breakpointInfo">
+        宽度: <span id="screenWidth"></span>px
+    </div>
+    
+    <div class="test-container">
+        <div class="test-header">
+            <h1>联系板块 - 响应式测试</h1>
+            <p>调整浏览器窗口大小来测试联系板块在不同屏幕下的表现</p>
+        </div>
+        
+        <div class="optimization-info">
+            <h3>📱 手机端优化内容</h3>
+            <ul>
+                <li><strong>布局调整</strong>: 表单和联系信息改为垂直排列</li>
+                <li><strong>表单优化</strong>: 全宽按钮，合适的输入框高度</li>
+                <li><strong>联系卡片</strong>: 添加背景和边框，更清晰的视觉层次</li>
+                <li><strong>二维码调整</strong>: 不同屏幕尺寸下的适当大小</li>
+                <li><strong>间距优化</strong>: 紧凑但不拥挤的间距设计</li>
+            </ul>
+        </div>
+
+        <!-- 联系板块 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">联系我</h2>
+                <p class="section-subtitle">让我们一起创造价值，赢得未来</p>
+                
+                <div class="contact-content">
+                    <div class="contact-form-wrapper">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required placeholder=" ">
+                                <label for="name">您的姓名</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required placeholder=" ">
+                                <label for="email">邮箱地址</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" required placeholder=" ">
+                                <label for="subject">主题</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="3" required placeholder=" "></textarea>
+                                <label for="message">留言内容</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">发送消息</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <span class="info-icon">📧</span>
+                            <div>
+                                <h4>邮箱</h4>
+                                <p>lianglaiyang@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💼</span>
+                            <div>
+                                <h4>职位</h4>
+                                <p>技术总监 / 全栈工程师</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🏢</span>
+                            <div>
+                                <h4>公司</h4>
+                                <p>广州为伊科技有限公司</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <div>
+                                <h4>微信</h4>
+                                <p>扫码添加微信</p>
+                                <div class="qr-container">
+                                    <img src="image/qr.jpg" alt="微信二维码" class="qr-code" title="微信二维码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 显示当前屏幕宽度和断点
+        function updateScreenWidth() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            if (width <= 480) breakpoint = '小手机 (<480px)';
+            else if (width <= 640) breakpoint = '手机 (<640px)';
+            else if (width <= 768) breakpoint = '大手机/小平板 (<768px)';
+            else if (width <= 1024) breakpoint = '平板 (<1024px)';
+            else breakpoint = '桌面 (>1024px)';
+            
+            document.getElementById('breakpointInfo').innerHTML = `
+                宽度: ${width}px<br>断点: ${breakpoint}
+            `;
+        }
+        
+        // 简单的表单提交处理（测试用）
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('这是测试页面，表单不会真正提交');
+        });
+        
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+    </script>
+</body>
+</html>

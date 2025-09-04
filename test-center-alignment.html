@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>居中对齐测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/fixes.css">
+    <style>
+        body {
+            margin: 0;
+            background: var(--bg-primary);
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .breakpoint-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .test-title {
+            margin: 0 0 15px 0;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+        .alignment-guide {
+            border: 2px dashed #ddd;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-info" id="breakpointInfo">
+        宽度: <span id="screenWidth"></span>px
+    </div>
+    
+    <div class="test-container">
+        <h1 style="text-align: center; margin: 20px 0; color: var(--primary-color);">📱 居中对齐修复测试</h1>
+        
+        <!-- 统计数字测试 -->
+        <div class="test-section">
+            <h2 class="test-title">1. 统计数字区域测试</h2>
+            <div class="alignment-guide">参考中心线</div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">20</span>+
+                    <span class="stat-label">年经验</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50</span>+
+                    <span class="stat-label">项目</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30</span>+
+                    <span class="stat-label">技术栈</span>
+                </div>
+            </div>
+            
+            <p style="font-size: 14px; color: #666; text-align: center;">
+                ✅ 应该居中显示，在小屏幕下保持对齐
+            </p>
+        </div>
+
+        <!-- Footer测试 -->
+        <div class="test-section">
+            <h2 class="test-title">2. 底部区域测试</h2>
+            <div class="alignment-guide">参考中心线</div>
+            
+            <footer class="footer" style="margin: 0; background: var(--bg-primary); padding: 20px 0;">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-section">
+                            <h3>阿来<span class="real-name-small">（梁来养）</span></h3>
+                            <p>从放牛娃到技术总监</p>
+                        </div>
+                        <div class="footer-section">
+                            <h4>快速链接</h4>
+                            <ul>
+                                <li><a href="#journey">我的故事</a></li>
+                                <li><a href="#skills">技术栈</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h4>联系方式</h4>
+                            <p>Email: lianglaiyang@gmail.com</p>
+                            <p>微信扫码添加：</p>
+                            <img src="image/qr.jpg" alt="微信二维码" class="footer-qr">
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 阿来. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+            
+            <p style="font-size: 14px; color: #666; text-align: center;">
+                ✅ 二维码应该居中显示，文字也应该居中
+            </p>
+        </div>
+        
+        <!-- 测试说明 -->
+        <div class="test-section">
+            <h2 class="test-title">🔍 测试说明</h2>
+            <ul style="font-size: 14px; color: #666; line-height: 1.6;">
+                <li><strong>调整窗口大小</strong> - 测试不同断点下的对齐效果</li>
+                <li><strong>统计数字</strong> - 在手机端应该垂直排列且居中</li>
+                <li><strong>底部二维码</strong> - 所有屏幕尺寸下都应该居中显示</li>
+                <li><strong>断点参考</strong> - ≤768px: 手机端, ≤480px: 小手机</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 显示当前屏幕宽度
+        function updateScreenWidth() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            if (width <= 480) breakpoint = '小手机';
+            else if (width <= 768) breakpoint = '手机';
+            else if (width <= 1024) breakpoint = '平板';
+            else breakpoint = '桌面';
+            
+            document.getElementById('breakpointInfo').innerHTML = `
+                宽度: ${width}px<br>断点: ${breakpoint}
+            `;
+        }
+        
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+    </script>
+</body>
+</html>

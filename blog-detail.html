@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客详情 - 梁来养的个人网站</title>
+    <title>博客详情 - 阿来的个人网站</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -423,7 +423,7 @@
     <div class="blog-detail-hero">
         <h1 id="blog-title" data-i18n="loading">加载中...</h1>
         <div class="blog-meta">
-            <span>📝 <span id="blog-author">梁来养</span></span>
+            <span>📝 <span id="blog-author">阿来</span></span>
             <span>📅 <span id="blog-date">2024-01-15</span></span>
             <span>⏱️ <span id="blog-readtime">15</span> <span id="readtime-text" data-i18n="blog.minRead">分钟阅读</span></span>
             <span>🏷️ <span id="blog-category">人生感悟</span></span>
@@ -454,7 +454,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>梁来养</h3>
+                    <h3>阿来<span class="real-name-small">（梁来养）</span></h3>
                     <p>从放牛娃到技术总监<br>用代码改变命运，用知识创造未来</p>
                 </div>
                 <div class="footer-section">
@@ -474,7 +474,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 梁来养. All rights reserved.</p>
+                <p>&copy; 2024 阿来. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -562,7 +562,7 @@
             // 更新页面内容
             const siteTitle = lang === 'en' ? 'Liang Laiyang\'s Personal Website' : 
                              lang === 'zh-TW' ? '梁來養的個人網站' : 
-                             '梁来养的个人网站';
+                             '阿来的个人网站';
             document.title = post.title + ' - ' + siteTitle;
             document.getElementById('blog-title').textContent = post.title;
             document.getElementById('blog-author').textContent = post.author;

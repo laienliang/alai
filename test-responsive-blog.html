@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式博客测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 0;
+            background: #f8f9fa;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .breakpoint-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .resize-instructions {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-info" id="breakpointInfo">
+        宽度: <span id="screenWidth"></span>px
+    </div>
+    
+    <div class="test-container">
+        <div class="test-header">
+            <h1>知识分享模块 - 响应式测试</h1>
+            <p>调整浏览器窗口大小来测试不同断点下的效果</p>
+        </div>
+        
+        <div class="resize-instructions">
+            <h3>🔧 测试指南</h3>
+            <ul>
+                <li><strong>桌面</strong> (>1024px): 多列网格布局，大间距</li>
+                <li><strong>平板</strong> (768-1024px): 单列布局，中等间距</li>
+                <li><strong>手机</strong> (480-768px): 单列布局，紧凑间距，优化字体</li>
+                <li><strong>小手机</strong> (<480px): 超紧凑布局，最小字体</li>
+            </ul>
+        </div>
+
+        <!-- 知识分享模块 -->
+        <section id="blog" class="blog">
+            <div class="container">
+                <h2 class="section-title">知识分享</h2>
+                <p class="section-subtitle">分享技术洞察和人生感悟</p>
+                
+                <div class="blog-categories">
+                    <button class="btn btn-secondary active" data-category="all">全部</button>
+                    <button class="btn btn-secondary" data-category="ai">AI前沿</button>
+                    <button class="btn btn-secondary" data-category="tech">技术分享</button>
+                    <button class="btn btn-secondary" data-category="life">人生感悟</button>
+                    <button class="btn btn-secondary" data-category="manage">管理心得</button>
+                </div>
+                
+                <div class="blog-grid">
+                    <!-- 推荐文章 -->
+                    <article class="blog-card blog-card-featured" data-category="ai">
+                        <div class="blog-header">
+                            <span class="blog-category">AI前沿</span>
+                            <span class="blog-date">2024.12.20</span>
+                        </div>
+                        <h3 class="blog-title">🚀 AI创赢：让每个企业都拥有自己的超级员工</h3>
+                        <p class="blog-excerpt">在人工智能快速发展的今天，我们推出了AI创赢平台，帮助企业快速构建专属的AI助手。从技术选型到落地实施，分享我们的实战经验。</p>
+                        <div class="blog-stats">
+                            <span>💡 原创</span>
+                            <span>👀 2.3k 阅读</span>
+                            <span>💬 128 评论</span>
+                        </div>
+                    </article>
+
+                    <!-- 普通文章 -->
+                    <article class="blog-card" data-category="tech">
+                        <div class="blog-header">
+                            <span class="blog-category">技术分享</span>
+                            <span class="blog-date">2024.12.15</span>
+                        </div>
+                        <h3 class="blog-title">微服务架构下的数据一致性解决方案</h3>
+                        <p class="blog-excerpt">在分布式系统中，数据一致性是一个核心挑战。本文分享我们在实际项目中的实践经验。</p>
+                        <div class="blog-stats">
+                            <span>👀 1.8k 阅读</span>
+                            <span>💬 56 评论</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="manage">
+                        <div class="blog-header">
+                            <span class="blog-category">管理心得</span>
+                            <span class="blog-date">2024.12.10</span>
+                        </div>
+                        <h3 class="blog-title">技术团队管理的三个关键要素</h3>
+                        <p class="blog-excerpt">从一线开发到团队管理，分享我在技术团队建设中的心得体会和实践经验。</p>
+                        <div class="blog-stats">
+                            <span>👀 2.1k 阅读</span>
+                            <span>💬 89 评论</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="life">
+                        <div class="blog-header">
+                            <span class="blog-category">人生感悟</span>
+                            <span class="blog-date">2024.12.05</span>
+                        </div>
+                        <h3 class="blog-title">从放牛娃到技术总监的十年路</h3>
+                        <p class="blog-excerpt">回顾我从农村到城市，从一线开发到管理岗位的成长历程，希望能给同样在奋斗的朋友一些启发。</p>
+                        <div class="blog-stats">
+                            <span>👀 3.5k 阅读</span>
+                            <span>💬 156 评论</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 显示当前屏幕宽度
+        function updateScreenWidth() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            // 显示当前断点
+            let breakpoint = '';
+            if (width <= 480) breakpoint = '小手机';
+            else if (width <= 640) breakpoint = '手机';
+            else if (width <= 768) breakpoint = '手机大屏';
+            else if (width <= 1024) breakpoint = '平板';
+            else breakpoint = '桌面';
+            
+            document.getElementById('breakpointInfo').innerHTML = `
+                宽度: ${width}px | 断点: ${breakpoint}
+            `;
+        }
+        
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+    </script>
+</body>
+</html>

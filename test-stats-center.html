@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统计数字居中测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/fixes.css">
+    <style>
+        body {
+            margin: 0;
+            background: var(--bg-primary);
+            padding: 20px 10px;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .breakpoint-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10000;
+            line-height: 1.3;
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+        .center-line {
+            position: relative;
+            margin: 20px 0;
+        }
+        .center-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: red;
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0.5;
+        }
+        .center-line::after {
+            content: '中心线';
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: red;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .test-description {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .test-description h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        .test-description ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .test-description li {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-info" id="breakpointInfo">
+        宽度: <span id="screenWidth"></span>px
+    </div>
+    
+    <div class="test-container">
+        <div class="test-header">
+            <h1>📊 统计数字水平居中测试</h1>
+            <p>调整浏览器窗口大小来测试不同断点下的居中效果</p>
+        </div>
+        
+        <div class="test-description">
+            <h3>🎯 测试目标</h3>
+            <ul>
+                <li><strong>桌面端</strong> (>768px): 三个统计块水平排列且整体居中</li>
+                <li><strong>手机端</strong> (≤768px): 三个统计块水平排列且整体居中，紧凑显示</li>
+                <li><strong>小屏</strong> (≤480px): 三个统计块垂直排列且每个都居中</li>
+            </ul>
+        </div>
+
+        <div class="center-line">
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">20</span>+
+                    <span class="stat-label">年经验</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50</span>+
+                    <span class="stat-label">项目</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30</span>+
+                    <span class="stat-label">技术栈</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-description">
+            <h3>✅ 期望效果</h3>
+            <ul>
+                <li>红色中心线应该穿过统计块组的中心</li>
+                <li>三个统计块应该以中心线为轴对称分布</li>
+                <li>在小屏幕下，每个统计块应该与中心线对齐</li>
+                <li>统计块之间的间距应该合适，不会过于拥挤或分散</li>
+            </ul>
+        </div>
+
+        <div style="height: 50px;"></div>
+    </div>
+
+    <script>
+        // 显示当前屏幕宽度和断点
+        function updateScreenWidth() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            let layout = '';
+            
+            if (width <= 480) {
+                breakpoint = '小屏手机';
+                layout = '垂直布局';
+            } else if (width <= 768) {
+                breakpoint = '手机/平板';
+                layout = '水平布局';
+            } else {
+                breakpoint = '桌面';
+                layout = '水平布局';
+            }
+            
+            document.getElementById('breakpointInfo').innerHTML = `
+                宽度: ${width}px<br>
+                断点: ${breakpoint}<br>
+                布局: ${layout}
+            `;
+        }
+        
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+        
+        // 添加一些交互提示
+        document.addEventListener('DOMContentLoaded', function() {
+            const stats = document.querySelector('.hero-stats');
+            
+            stats.addEventListener('mouseenter', function() {
+                this.style.outline = '2px dashed #2196f3';
+                this.style.outlineOffset = '5px';
+            });
+            
+            stats.addEventListener('mouseleave', function() {
+                this.style.outline = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

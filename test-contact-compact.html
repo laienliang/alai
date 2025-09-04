@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系板块紧凑设计测试</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/contact-compact.css">
+    <link rel="stylesheet" href="css/fixes.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 10px 0;
+            background: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .breakpoint-info {
+            position: fixed;
+            top: 5px;
+            right: 5px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            z-index: 10000;
+            line-height: 1.2;
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .comparison-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .comparison h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .feature-list {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .feature-list li {
+            margin-bottom: 4px;
+        }
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-info" id="breakpointInfo">
+        宽度: <span id="screenWidth"></span>px
+    </div>
+    
+    <div class="test-container">
+        <div class="test-header">
+            <h1 style="margin: 0 0 10px 0; font-size: 24px;">📱 联系板块紧凑设计</h1>
+            <p style="margin: 0; font-size: 14px; color: #666;">隐藏图标，紧凑布局，极简设计</p>
+        </div>
+        
+        <div class="comparison">
+            <div class="comparison-item">
+                <h3>🎯 设计目标</h3>
+                <ul class="feature-list">
+                    <li>✅ 隐藏所有装饰性图标</li>
+                    <li>✅ 紧凑的表单布局</li>
+                    <li>✅ 简洁的联系信息展示</li>
+                    <li>✅ 更小的二维码</li>
+                    <li>✅ 减少不必要的空白</li>
+                </ul>
+            </div>
+            <div class="comparison-item">
+                <h3>📐 响应式断点</h3>
+                <ul class="feature-list">
+                    <li><strong>≤768px:</strong> 紧凑设计，无图标</li>
+                    <li><strong>≤480px:</strong> 超紧凑，最小字体</li>
+                    <li><strong>>768px:</strong> 保持原有设计</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 联系板块 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">联系我</h2>
+                <p class="section-subtitle">让我们一起创造价值，赢得未来</p>
+                
+                <div class="contact-content">
+                    <!-- 联系表单 -->
+                    <div class="contact-form-wrapper">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required placeholder=" ">
+                                <label for="name">您的姓名</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required placeholder=" ">
+                                <label for="email">邮箱地址</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" required placeholder=" ">
+                                <label for="subject">主题</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="3" required placeholder=" "></textarea>
+                                <label for="message">留言内容</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">发送消息</button>
+                        </form>
+                    </div>
+                    
+                    <!-- 联系信息 -->
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <h3>联系方式</h3>
+                            <p>欢迎通过以下方式与我联系</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📧</span>
+                            <div>
+                                <h4>邮箱</h4>
+                                <p>lianglaiyang@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💼</span>
+                            <div>
+                                <h4>职位</h4>
+                                <p>技术总监</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🏢</span>
+                            <div>
+                                <h4>公司</h4>
+                                <p>广州为伊科技有限公司</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <div>
+                                <h4>微信</h4>
+                                <p>扫码添加微信</p>
+                                <div class="qr-container">
+                                    <img src="image/qr.jpg" alt="微信二维码" class="qr-code" title="微信二维码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 显示当前屏幕宽度和断点
+        function updateScreenWidth() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            let status = '';
+            if (width <= 480) {
+                breakpoint = '超小屏';
+                status = '极紧凑';
+            } else if (width <= 768) {
+                breakpoint = '手机';
+                status = '紧凑';
+            } else if (width <= 1024) {
+                breakpoint = '平板';
+                status = '正常';
+            } else {
+                breakpoint = '桌面';
+                status = '原设计';
+            }
+            
+            document.getElementById('breakpointInfo').innerHTML = `
+                ${width}px<br>${breakpoint} - ${status}
+            `;
+        }
+        
+        // 表单提交测试
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn');
+            const originalText = btn.textContent;
+            btn.textContent = '发送中...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.textContent = '发送成功!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 1000);
+            }, 1000);
+        });
+        
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+    </script>
+</body>
+</html>

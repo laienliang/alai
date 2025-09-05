@@ -554,15 +554,16 @@ function initContactForm() {
         submitButton.disabled = true;
         
         try {
-            // 模拟发送请求
-            await simulateSendMessage(data);
+            // 发送到飞书
+            await sendToFeishu(data);
             
             // 显示成功消息
-            showNotification('消息已成功发送！', 'success');
+            showNotification('消息已成功发送！感谢您的联系，我会尽快回复。', 'success');
             elements.contactForm.reset();
         } catch (error) {
+            console.error('发送失败:', error);
             // 显示错误消息
-            showNotification('发送失败，请稍后重试。', 'error');
+            showNotification('发送失败，请稍后重试或直接发送邮件至 lianglaiyang@gmail.com', 'error');
         } finally {
             submitButton.textContent = originalText;
             submitButton.disabled = false;
@@ -571,15 +572,26 @@ function initContactForm() {
 }
 
 /**
- * 模拟发送消息
+ * 发送消息到飞书（纯静态网站 - 简化方式）
  */
-function simulateSendMessage(data) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log('Message sent:', data);
-            resolve();
-        }, 1500);
-    });
+async function sendToFeishu(data) {
+    if (!window.SimpleFeishu) {
+        throw new Error('简化飞书模块未加载，请检查 js/simple-feishu.js 是否正确引入');
+    }
+    
+    try {
+        const result = await window.SimpleFeishu.sendMessage(data);
+        
+        if (result.success) {
+            console.log(`✅ 飞书消息发送成功 (${result.method}方式)`);
+            return result;
+        } else {
+            throw new Error('飞书消息发送失败');
+        }
+    } catch (error) {
+        console.error('❌ 飞书消息发送失败:', error);
+        throw error;
+    }
 }
 
 /**

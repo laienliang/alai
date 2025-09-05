@@ -1,108 +1,133 @@
-# 梁来养个人网站
+# 阿来个人网站 - 纯静态HTML
 
-## 项目简介
-从放牛娃到技术总监的励志故事，一个用代码改变命运的个人品牌网站。
+> 从放牛娃到技术总监的励志故事
 
-## 技术栈
-- **前端**：纯HTML5 + CSS3 + 原生JavaScript
-- **设计**：响应式设计，支持所有设备
-- **主题**：明暗主题切换
-- **国际化**：支持简体中文、英文、繁体中文
+## ⚡ 快速启动
 
-## 功能特性
-- 🎯 个人故事时间轴展示
-- 💼 项目作品集展示
-- 📊 技能可视化展示
-- 📝 博客文章分类
-- 🌏 多语言支持
-- 🎨 明暗主题切换
-- 📱 完美的移动端适配
-- ⚡ 极速加载性能
+这是一个**100%纯静态**的HTML网站，无需任何服务器或构建工具。
 
-## 快速开始
-
-### 方式1：直接打开
-直接在浏览器中打开 `index.html` 文件即可查看网站。
-
-### 方式2：使用本地服务器
+### 本地预览
 ```bash
-# 使用Python简单服务器
+# 方法1：Python
 python3 -m http.server 8000
 
-# 或使用Node.js的http-server
+# 方法2：Node.js
 npx http-server
 
-# 或使用VS Code的Live Server插件
+# 方法3：直接双击 index.html
 ```
 
-然后访问 `http://localhost:8000`
+### 部署到任何地方
+- 📁 直接上传所有文件到任何Web服务器
+- 🚀 GitHub Pages、Vercel、Netlify等免费托管
+- ☁️ 云存储（阿里云OSS、腾讯云COS等）
 
-## 项目结构
+## 📧 飞书联系表单集成
+
+网站集成了飞书消息推送，当有用户提交联系表单时会自动发送到您的飞书群聊。
+
+### 5分钟设置步骤：
+
+1. **创建飞书群聊机器人**
+   - 飞书群聊 → 设置 → 群机器人 → 添加机器人 → 自定义机器人
+   - 复制生成的Webhook URL
+
+2. **配置网站代码**
+   - 编辑 `js/feishu-webhook.js`
+   - 第11行替换：`WEBHOOK_URL: '你的webhook地址'`
+
+3. **测试功能**
+   - 打开网站，按F12，在控制台输入：`FeishuWebhook.testConnection()`
+   - 如果返回`true`且飞书群收到消息，说明设置成功！
+
+**详细说明**: 参考 `飞书设置指南.md`
+
+## 🛠️ 技术栈
+
+- **纯HTML5** - 无框架依赖
+- **原生CSS3** - 响应式设计，主题切换
+- **原生JavaScript** - 动画、交互、国际化
+- **飞书Webhook** - 联系表单消息推送
+
+## 📱 功能特性
+
+- ✨ **响应式设计** - 完美适配手机、平板、PC
+- 🌙 **主题切换** - 支持亮色/暗色模式  
+- 🌍 **多语言** - 中文简体/繁体/英文
+- 📝 **博客系统** - 客户端渲染，无需数据库
+- 💼 **作品展示** - SVG图标，动画效果
+- 📧 **联系表单** - 飞书消息推送
+- 🎯 **SEO优化** - 结构化数据，语义化标签
+
+## 📂 文件结构
+
 ```
-personal-website/
+/
 ├── index.html              # 主页面
-├── css/
-│   ├── main.css           # 主样式
-│   ├── responsive.css     # 响应式
-│   ├── themes.css         # 主题样式
-│   └── animations.css     # 动画效果
+├── blog-detail.html        # 博客详情页
 ├── js/
-│   ├── main.js            # 主逻辑
-│   ├── i18n.js            # 国际化
-│   └── theme.js           # 主题切换
-├── images/
-│   └── profile/           # 个人照片
-└── README.md              # 本文档
+│   ├── main.js             # 核心交互逻辑
+│   ├── feishu-webhook.js   # 飞书集成
+│   ├── i18n-complete.js    # 国际化翻译
+│   ├── theme.js            # 主题切换
+│   ├── blog-posts.js       # 博客内容
+│   └── blog-loader.js      # 博客加载器
+├── css/
+│   ├── main.css            # 主样式
+│   ├── responsive.css      # 响应式
+│   ├── themes.css          # 主题样式
+│   ├── animations.css      # 动画效果
+│   └── ...                 # 其他样式文件
+├── image/                  # 图片资源
+└── 飞书设置指南.md         # 集成说明
 ```
 
-## 部署方式
+## 🚀 部署建议
 
-### GitHub Pages
-1. 将代码推送到GitHub仓库
-2. 在Settings > Pages中启用GitHub Pages
-3. 选择main分支作为源
+### GitHub Pages（推荐）
+1. Fork此仓库
+2. 启用Pages功能
+3. 自动部署，免费域名
 
-### Netlify
-1. 将代码推送到GitHub
-2. 在Netlify连接GitHub仓库
-3. 自动部署
+### Vercel（最快）
+1. 导入项目到Vercel
+2. 自动部署，CDN加速
+3. 免费自定义域名
 
-### 自建服务器
-1. 将文件上传到服务器
-2. 配置Nginx/Apache
-3. 启用HTTPS
+### Netlify（简单）
+1. 拖拽文件夹到Netlify
+2. 瞬间部署，表单处理
+3. 免费HTTPS证书
 
-## 性能优化
-- Lighthouse评分：95+
-- 首次内容绘制：< 1.5秒
-- 完全加载时间：< 3秒
-- 移动端优化：100%
+## 🔧 自定义修改
 
-## SEO优化
-- 完整的Meta标签
-- 结构化数据
-- 语义化HTML
-- 移动端友好
+### 修改个人信息
+- 编辑 `index.html` 中的个人信息
+- 替换 `image/` 文件夹中的头像和二维码
+- 更新 `js/i18n-complete.js` 中的翻译内容
 
-## 浏览器支持
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-- 移动端主流浏览器
+### 添加博客文章
+- 编辑 `js/blog-posts.js`
+- 按现有格式添加新文章
 
-## 作者信息
-- **姓名**：梁来养
-- **职位**：广州为伊科技有限公司技术总监
-- **经历**：从放牛娃到技术总监的励志故事
+### 修改样式
+- 主样式：`css/main.css`
+- 响应式：`css/responsive.css`  
+- 主题：`css/themes.css`
 
-## 许可证
-MIT License
+## 🛡️ 浏览器支持
 
-## 联系方式
-- GitHub: [github.com/lianglaiyang]
-- Email: lianglaiyang@example.com
+- ✅ Chrome 60+
+- ✅ Firefox 60+  
+- ✅ Safari 12+
+- ✅ Edge 79+
+
+## 📄 许可证
+
+MIT License - 可自由使用、修改、分发
 
 ---
 
-*"从大山深处的放牛娃，到引领AI时代的技术总监，用代码改变命运，用知识创造未来。"*
+**作者**: 阿来（梁来养）  
+**邮箱**: lianglaiyang@gmail.com  
+**网站**: https://lianglaiyang.com

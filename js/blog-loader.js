@@ -24,10 +24,18 @@ function updateBlogCards(posts) {
         if (blogCards[index]) {
             const card = blogCards[index];
             
-            // 更新分类
+            // 更新分类 - 显示中文文本，但保持英文key作为data-category
             const categorySpan = card.querySelector('.blog-category');
             if (categorySpan) {
-                categorySpan.textContent = post.category;
+                // 将英文key映射为中文显示文本
+                const categoryMap = {
+                    'ai': 'AI前沿',
+                    'philosophy': '哲学思辨', 
+                    'life': '人生感悟',
+                    'management': '管理心得',
+                    'tech': '技术文章'
+                };
+                categorySpan.textContent = categoryMap[post.category] || post.category;
             }
             
             // 更新日期
@@ -66,8 +74,8 @@ function updateBlogCards(posts) {
                 };
             }
             
-            // 更新data-category属性
-            card.setAttribute('data-category', post.category.toLowerCase());
+            // 更新data-category属性 - 使用英文key
+            card.setAttribute('data-category', post.category);
         }
     });
 }

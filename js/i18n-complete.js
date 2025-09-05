@@ -207,14 +207,15 @@ class I18nManager {
                         tech: '技术文章',
                         management: '管理心得',
                         life: '人生感悟',
-                        philosophy: '玄学探讨'
+                        philosophy: '哲学思辨'
                     },
                     categories: {
                         all: '全部',
+                        ai: 'AI前沿',
                         tech: '技术文章',
                         management: '管理心得',
                         life: '人生感悟',
-                        philosophy: '玄学探讨'
+                        philosophy: '哲学思辨'
                     },
                     readmore: '阅读更多 →',
                     readMore: '阅读更多 →',
@@ -466,6 +467,7 @@ class I18nManager {
                     },
                     categories: {
                         all: 'All',
+                        ai: 'AI Innovation',
                         tech: 'Technical',
                         management: 'Management',
                         life: 'Life',
@@ -717,14 +719,15 @@ class I18nManager {
                         tech: '技術文章',
                         management: '管理心得',
                         life: '人生感悟',
-                        philosophy: '玄學探討'
+                        philosophy: '哲學思辨'
                     },
                     categories: {
                         all: '全部',
+                        ai: 'AI前沿',
                         tech: '技術文章',
                         management: '管理心得',
                         life: '人生感悟',
-                        philosophy: '玄學探討'
+                        philosophy: '哲學思辨'
                     },
                     readmore: '閱讀更多 →',
                     readMore: '閱讀更多 →',

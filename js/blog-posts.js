@@ -6,7 +6,7 @@ const blogPosts = {
     'zh-CN': [
         {
             id: 'ai-revolution-2024',
-            category: 'AI前沿',
+            category: 'ai',
             title: '🔥 AI创赢：让每个企业都拥有自己的超级员工',
             author: '梁来养',
             date: '2024-12-20',
@@ -313,7 +313,7 @@ def enhanced_rag_query(user_question):
         },
         {
             id: 'adler-and-bazi',
-            category: '哲学思辨',
+            category: 'philosophy',
             title: '命运的双重解读：阿德勒目的论与四柱预测的对话',
             author: '梁来养',
             date: '2024-11-28',
@@ -803,7 +803,7 @@ my_life.daily_practice()
         },
         {
             id: 'cowboy-to-director',
-            category: '人生感悟',
+            category: 'life',
             title: '从放牛娃到技术总监：我的20年技术成长之路',
             author: '梁来养',
             date: '2024-01-15',
@@ -1042,7 +1042,7 @@ my_life.daily_practice()
         },
         {
             id: 'wangyang-ming-tech',
-            category: '管理心得',
+            category: 'management',
             title: '王阳明心学在技术管理中的应用',
             author: '梁来养',
             date: '2024-01-20',
@@ -1391,7 +1391,7 @@ my_life.daily_practice()
         },
         {
             id: 'high-concurrency-architecture',
-            category: '技术文章',
+            category: 'tech',
             title: '从0到30万QPS：高并发架构演进实战',
             author: '梁来养',
             date: '2024-01-25',
@@ -1879,7 +1879,7 @@ my_life.daily_practice()
         // English versions of the blog posts
         {
             id: 'ai-revolution-2024',
-            category: 'AI Innovation',
+            category: 'ai',
             title: '🔥 AI Chuangying: Giving Every Enterprise Its Own Super Employee',
             author: 'Liang Laiyang',
             date: '2024-12-20',
@@ -2070,7 +2070,7 @@ my_life.daily_practice()
         },
         {
             id: 'adler-and-bazi',
-            category: 'Philosophy',
+            category: 'philosophy',
             title: 'Dual Interpretation of Destiny: Dialogue between Adler\'s Teleology and Four Pillars Prediction',
             author: 'Liang Laiyang',
             date: '2024-11-10',
@@ -2297,7 +2297,7 @@ my_life.daily_practice()
         },
         {
             id: 'cowboy-to-director',
-            category: 'Life',
+            category: 'life',
             title: 'From Cowboy to Tech Director: My 20-Year Journey',
             author: 'Liang Laiyang',
             date: '2024-01-15',
@@ -2394,7 +2394,7 @@ my_life.daily_practice()
         },
         {
             id: 'wangyang-ming-tech',
-            category: 'Management',
+            category: 'management',
             title: 'Applying Wang Yangming Philosophy in Tech Management',
             author: 'Liang Laiyang',
             date: '2024-01-20',
@@ -2478,7 +2478,7 @@ my_life.daily_practice()
         },
         {
             id: 'high-concurrency-architecture',
-            category: 'Technical',
+            category: 'tech',
             title: 'From 0 to 300K QPS: High Concurrency Architecture Evolution',
             author: 'Liang Laiyang',
             date: '2024-01-25',
@@ -2625,7 +2625,7 @@ my_life.daily_practice()
     'zh-TW': [
         {
             id: 'ai-revolution-2024',
-            category: 'AI前沿',
+            category: 'ai',
             title: '🔥 AI創贏：讓每個企業都擁有自己的超級員工',
             author: '梁來養',
             date: '2024-12-20',
@@ -2733,7 +2733,7 @@ my_life.daily_practice()
         },
         {
             id: 'tech-philosophy',
-            category: '人生感悟',
+            category: 'life',
             title: '技術管理中的知行合一：從王陽明心學談起',
             author: '梁來養',
             date: '2024-01-15',
@@ -2795,7 +2795,7 @@ my_life.daily_practice()
         },
         {
             id: 'high-concurrency-architecture',
-            category: '技術分享',
+            category: 'tech',
             title: '從0到30萬QPS：高並發架構進化之路',
             author: '梁來養',
             date: '2024-01-25',
